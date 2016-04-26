@@ -26,4 +26,6 @@ dependencies {
     compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0.3'
     compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
     compile 'com.android.support:design:23.3.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.guava:guava:19.0'
 }

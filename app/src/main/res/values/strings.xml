@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SMI_servicios</string>
     <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar Contrasena</string>
 </resources>

@@ -2,16 +2,14 @@ package com.example.jhon.smi_servicios;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.StrictMode;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.helper.ItemTouchUIUtil;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.jhon.smi_servicios.Models.users;
+import com.example.jhon.smi_servicios.Models.Users;
 import com.example.jhon.smi_servicios.Util.Constants;
 import com.example.jhon.smi_servicios.Util.GetUser;
 
@@ -48,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.login_sigin:
                 GetUser userfacade= new GetUser(email.getEditText().getText().toString(),password.getEditText().getText().toString());
-                users user = userfacade.LoginUser();
+                Users user = userfacade.LoginUser();
                 if (user != null){
                     editorPreferences.putBoolean(Constants.isLoged,true);
                     editorPreferences.putString(Constants.userEmai,user.getMail());
@@ -56,11 +54,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     editorPreferences.putString(Constants.typeUser,String.valueOf(user.getType()));
                     editorPreferences.commit();
 
-                    if (user.getId() == Constants.CLIENT){
+                    if (user.getType() == Constants.CLIENT){
                     startActivity(new Intent(this,ClientServicesActivity.class));
                     }
 
-                    if (user.getId() == Constants.ADMIN){
+                    if (user.getType() == Constants.ADMIN){
                         startActivity(new Intent(this,AdminServiciesActivity.class));
                     }
 

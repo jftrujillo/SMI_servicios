@@ -3,8 +3,8 @@ package com.example.jhon.smi_servicios.Models;
 /**
  * Created by jhon on 25/04/16.
  */
-public class users {
-    int id;
+public class Users {
+    String id;
     int type;
     String name;
     String mail;
@@ -13,11 +13,11 @@ public class users {
     
 
     //region getters and setters
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
