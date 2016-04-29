@@ -2,4 +2,10 @@
     <string name="app_name">SMI_servicios</string>
     <string name="password">Contraseña</string>
     <string name="confirm_password">Confirmar Contrasena</string>
+    <string name="startin_session">Iniciando Session</string>
+    <string name="please_wait">por favor espere</string>
+    <string name="check_internet">Por favor verifique su conexino a internet</string>
+    <string name="home_asist">Asistencia Hogar</string>
+    <string name="way_asist">Asistencia vial</string>
+    <string name="choosen_driver">Conductor elegido</string>
 </resources>

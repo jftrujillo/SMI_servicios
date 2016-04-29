@@ -11,5 +11,12 @@ public class Constants {
     public static final String typeUser = "USER_TYPE";
     public static final int    CLIENT = 1;
     public static final int    ADMIN = 2;
+    public static final String url = "https://smiserviciosmovil.azure-mobile.net/";
+    public static final String key = "qIufyUhXNGYkLUXenUUDufQFPMdcUm65";
+    public static final String userName = "USER_NAME";
+
+
+
+
 
 }

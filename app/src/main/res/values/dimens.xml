@@ -5,4 +5,5 @@
     <dimen name="big_letter">22sp</dimen>
     <dimen name="big_padding">8dp</dimen>
     <dimen name="mediumpadding">4dp</dimen>
+    <dimen name="medium_letter">14sp</dimen>
 </resources>
