@@ -6,4 +6,7 @@
     <dimen name="big_padding">8dp</dimen>
     <dimen name="mediumpadding">4dp</dimen>
     <dimen name="medium_letter">14sp</dimen>
+    <dimen name="big_margin">8dp</dimen>
+    <dimen name="smal_margin">4dp</dimen>
+    <dimen name="height_map_fragment">200dp</dimen>
 </resources>

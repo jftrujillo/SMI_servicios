@@ -28,9 +28,11 @@
             android:textSize="@dimen/big_letter"
             android:text="servicios"
             android:gravity="center"
+            android:layout_margin="@dimen/big_margin"
             />
 
            <LinearLayout
+               android:id="@+id/client_services_home"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:orientation="horizontal"
@@ -55,6 +57,7 @@
            </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/client_services_driver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -80,6 +83,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/client_services_roadasistence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

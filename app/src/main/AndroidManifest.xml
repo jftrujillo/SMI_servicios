@@ -21,7 +21,11 @@
         <activity android:name=".ClientServicesActivity" />
         <activity android:name=".AdminServiciesActivity" />
         <activity android:name=".SigninActivity" />
-        <activity android:name=".RootActivity"></activity>
+        <activity android:name=".RootActivity" />
+        <activity android:name=".HomeServicesActivity" />
+        <activity android:name=".DriverServicesActivity" />
+        <activity android:name=".RoadAsistenceServicesActivity" />
+        <activity android:name=".DetailServicesActivity"></activity>
     </application>
 
 </manifest>

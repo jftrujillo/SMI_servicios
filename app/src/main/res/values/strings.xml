@@ -8,4 +8,8 @@
     <string name="home_asist">Asistencia Hogar</string>
     <string name="way_asist">Asistencia vial</string>
     <string name="choosen_driver">Conductor elegido</string>
+    <string name="road_asistence">Asistencia Vial</string>
+    <string name="actual_direction">Direccion Actual</string>
+    <string name="future_direction">Direccion de Llegada</string>
+    <string name="request_button">solicitar</string>
 </resources>

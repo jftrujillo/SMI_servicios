@@ -20,15 +20,18 @@ public class PivotActivity extends AppCompatActivity {
         if (isLoged){
             if (type.equals("1")){
                 startActivity(new Intent(this,ClientServicesActivity.class));
+                finish();
             }
 
             if (type.equals("2")){
                 startActivity(new Intent(this,AdminServiciesActivity.class));
+                finish();
             }
         }
 
         else {
             startActivity(new Intent(this,LoginActivity.class));
+            finish();
         }
     }
 }

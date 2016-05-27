@@ -4,10 +4,16 @@ package com.example.jhon.smi_servicios.Models;
  * Created by jhon on 25/04/16.
  */
 public class Users {
-    String id;
-    int type;
     String name;
+    String identifycard;
+    String telephone;
+    String cellphone;
     String mail;
+    String id;
+    String adress;
+    String genre;
+    String age;
+    int type;
     String password;
 
     
@@ -52,7 +58,57 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getIdentifycard() {
+        return identifycard;
+    }
+
+    public void setIdentifycard(String identifycard) {
+        this.identifycard = identifycard;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getCellphone() {
+        return cellphone;
+    }
+
+    public void setCellphone(String cellphone) {
+        this.cellphone = cellphone;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
     //endregion
+
+
 
     //endregion
 }
