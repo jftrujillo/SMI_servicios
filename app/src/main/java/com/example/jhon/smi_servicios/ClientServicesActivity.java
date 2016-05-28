@@ -1,8 +1,11 @@
 package com.example.jhon.smi_servicios;
 
 import android.content.Intent;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -18,12 +21,22 @@ import java.net.MalformedURLException;
 
 public class ClientServicesActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayout home,driver,roadassitence;
+    Toolbar toobar;
+    CollapsingToolbarLayout collapse;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_services);
+        toobar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toobar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        collapse = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapse.setTitle("servicios");
+
+
+
 
 
         home = (LinearLayout) findViewById(R.id.client_services_home);
@@ -32,6 +45,7 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
         home.setOnClickListener(this);
         driver.setOnClickListener(this);
         roadassitence.setOnClickListener(this);
+
 
 
 

@@ -143,9 +143,16 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 user.setMail(email);
                 user.setName(name);
                 user.setPassword(pass);
+                user.setAdress("");
+                user.setAge("");
+                user.setCellphone("");
+                user.setGenre("");
+                user.setIdentifycard("");
+                user.setTelephone("");
                     mTableUSers.insert(user, new TableOperationCallback<Users>() {
                         @Override
                         public void onCompleted(Users entity, Exception exception, ServiceFilterResponse response) {
+
                             if (exception == null){
                                 Log.i("Azure","Usuario Creado");
                                 editor.putString(Constants.userID,entity.getId());
@@ -159,10 +166,12 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                                 finish();
                             }
                             else {
+                                Log.i("AZURE","Usuario not created "+ exception.toString());
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getApplicationContext(),"Problemas Creando el usuario",Toast.LENGTH_SHORT).show();
+                                        progress.dismiss();
                                     }
                                 });
                             }
