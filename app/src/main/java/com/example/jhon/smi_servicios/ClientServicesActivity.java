@@ -65,7 +65,7 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
                 startActivity(new Intent(this,DetailServicesActivity.class).putExtra(Constants.TYPE_CLIENT_SERVICES,Constants.HOME_SERVICES));
                 break;
             case R.id.client_services_roadasistence:
-                startActivity(new Intent(this,RoadAsistenceServicesActivity.class).putExtra(Constants.TYPE_CLIENT_SERVICES, Constants.ROAD_ASISTENCE_SERVICES));
+                startActivity(new Intent(this,DetailServicesActivity.class).putExtra(Constants.TYPE_CLIENT_SERVICES, Constants.ROAD_ASISTENCE_SERVICES));
                 break;
 
         }

@@ -50,7 +50,7 @@ public class ListServicesAdapter extends BaseAdapter{
         }
 
         ImageView img = (ImageView) v.findViewById(R.id.template_list_img);
-        Picasso.with(context).load(data.get(position).getImgUrl()).into(img);
+        Picasso.with(context).load(data.get(position).getImgurl()).into(img);
 
         TextView txt = (TextView) v.findViewById(R.id.template_list_name);
         txt.setText(data.get(position).getName());

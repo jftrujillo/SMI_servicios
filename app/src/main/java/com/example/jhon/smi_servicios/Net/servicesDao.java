@@ -3,6 +3,7 @@ package com.example.jhon.smi_servicios.Net;
 import android.os.AsyncTask;
 
 import com.example.jhon.smi_servicios.Models.Services;
+import com.example.jhon.smi_servicios.Util.Constants;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.MobileServiceList;
 import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
@@ -70,7 +71,7 @@ public class ServicesDao {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    mList = mTable.where().field("type").eq(1).execute().get();
+                    mList = mTable.where().field("type").eq(Constants.HOME_SERVICES).execute().get();
                 } catch (InterruptedException e) {
                     dataBaseResponse.onCompletedQuery(QUERY_FAILED,null);
                     e.printStackTrace();
@@ -97,7 +98,7 @@ public class ServicesDao {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    mList = mTable.where().field("type").eq(3).execute().get();
+                    mList = mTable.where().field("type").eq(Constants.ROAD_ASISTENCE_SERVICES).execute().get();
                 } catch (InterruptedException e) {
                    dataBaseResponse.onCompletedQuery(QUERY_FAILED,null);
                     e.printStackTrace();

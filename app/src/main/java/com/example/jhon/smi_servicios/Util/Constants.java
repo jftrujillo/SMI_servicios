@@ -15,9 +15,11 @@ public class Constants {
     public static final String key = "qIufyUhXNGYkLUXenUUDufQFPMdcUm65";
     public static final String userName = "USER_NAME";
     public static final Integer HOME_SERVICES    = 1;
-    public static final Integer   DRIVER_SERVICES  = 2;
-    public static final Integer   ROAD_ASISTENCE_SERVICES  = 3;
+    public static final Integer   DRIVER_SERVICES  = 3;
+    public static final Integer   ROAD_ASISTENCE_SERVICES  = 2;
     public static final String TYPE_CLIENT_SERVICES = "type_client_services";
+    public static final String AZURE_MOBILE_SERVICE_URL = "https://smiserviciosmovil.azure-mobile.net/";
+    public static final String AZURE_MOBILE_SERVICE_KEY  = "qIufyUhXNGYkLUXenUUDufQFPMdcUm65";
 
 
 

@@ -25,7 +25,9 @@
                 android:id="@+id/client_services_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="18dp"
                 >
                 <ImageView
                     android:layout_width="80dp"
@@ -41,6 +43,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/medium_letter"
                     android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+
 
                     />
 
@@ -50,8 +54,9 @@
                 android:id="@+id/client_services_driver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginTop="8dp"
+                android:gravity="center"
                 >
                 <ImageView
                     android:layout_width="80dp"
@@ -76,8 +81,9 @@
                 android:id="@+id/client_services_roadasistence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginTop="8dp"
+                android:gravity="center"
                 >
                 <ImageView
                     android:layout_width="80dp"
@@ -92,7 +98,9 @@
                     android:text="@string/way_asist"
                     android:gravity="center"
                     android:textSize="@dimen/medium_letter"
-                    android:layout_gravity="center"></TextView>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    ></TextView>
 
 
 
@@ -192,7 +200,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="48dp"
+        app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp">
 
         <android.support.v7.widget.Toolbar

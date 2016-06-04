@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class Services {
     public static final Integer HOME_SERVICES    = 1;
-    public static final Integer   DRIVER_SERVICES  = 2;
-    public static final Integer   ROAD_ASISTENCE_SERVICES  = 3;
+    public static final Integer   DRIVER_SERVICES  = 3;
+    public static final Integer   ROAD_ASISTENCE_SERVICES  = 2;
 
     String id;
     String name;
-    String imgUrl;
-    int servicetype;
+    String imgurl;
+    int type;
 
     //region Getters and setters
 
@@ -37,20 +37,20 @@ public class Services {
         this.name = name;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getImgurl() {
+        return imgurl;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
     }
 
-    public int getServicetype() {
-        return servicetype;
+    public int getType() {
+        return type;
     }
 
-    public void setServicetype(int servicetype) {
-        this.servicetype = servicetype;
+    public void setType(int type) {
+        this.type = type;
     }
 
     //endregion
@@ -60,14 +60,14 @@ public class Services {
         List<Services> data = new ArrayList<>();
         Services servicio1 =  new Services();
         servicio1.setName("Plomeria");
-        servicio1.setServicetype(Constants.HOME_SERVICES);
-        servicio1.setImgUrl("http://asistirsolucionessas.com.co/wp-content/uploads/2015/10/3.jpg");
+        servicio1.setType(Constants.HOME_SERVICES);
+        servicio1.setImgurl("http://asistirsolucionessas.com.co/wp-content/uploads/2015/10/3.jpg");
         data.add(servicio1);
 
         Services servicio2 =  new Services();
         servicio2.setName("Asistencia Electrica");
-        servicio2.setServicetype(Constants.HOME_SERVICES);
-        servicio2.setImgUrl("http://elperiodicodelaenergia.com/wp-content/uploads/2014/10/cuadro-electrico.jpg");
+        servicio2.setType(Constants.HOME_SERVICES);
+        servicio2.setImgurl("http://elperiodicodelaenergia.com/wp-content/uploads/2014/10/cuadro-electrico.jpg");
         data.add(servicio2);
 
         return data;
@@ -77,14 +77,14 @@ public class Services {
         List<Services> data = new ArrayList<>();
         Services servicio1 =  new Services();
         servicio1.setName("Grua");
-        servicio1.setServicetype(Constants.ROAD_ASISTENCE_SERVICES);
-        servicio1.setImgUrl("http://autoperiscal.com/wp-content/uploads/2015/02/grua24horas.jpg");
+        servicio1.setType(Constants.ROAD_ASISTENCE_SERVICES);
+        servicio1.setImgurl("http://autoperiscal.com/wp-content/uploads/2015/02/grua24horas.jpg");
         data.add(servicio1);
 
         Services servicio2 =  new Services();
         servicio2.setName("Mecanico");
-        servicio2.setServicetype(Constants.ROAD_ASISTENCE_SERVICES);
-        servicio2.setImgUrl("http://uprosanluis.edu.ar/uproweb/wp-content/uploads/2014/12/mecanico-700x460.jpg");
+        servicio2.setType(Constants.ROAD_ASISTENCE_SERVICES);
+        servicio2.setImgurl("http://uprosanluis.edu.ar/uproweb/wp-content/uploads/2014/12/mecanico-700x460.jpg");
         data.add(servicio2);
 
         return data;
