@@ -20,8 +20,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".60"
-                android:background="@color/colorPrimary"
+                android:layout_weight=".40"
+                android:background="@color/blackSmi"
                 />
 
             <LinearLayout
@@ -29,6 +29,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight=".30"
                 android:orientation="vertical"
+                android:paddingLeft="@dimen/margin_fields_login"
+                android:paddingRight="@dimen/margin_fields_login"
+                android:background="@color/yellowSmi"
                 >
 
                 <TextView
@@ -37,7 +40,7 @@
                     android:text="Crear Cuenta"
                     android:gravity="center"
                     android:textSize="@dimen/big_letter"
-                    android:padding="@dimen/big_padding"
+                    android:layout_marginTop="@dimen/big_margin"
                     android:textColor="#000000"
                     />
                 <android.support.design.widget.TextInputLayout
@@ -45,11 +48,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/mediumpadding"
+
                     >
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Correo Electronico"
+                        android:gravity="center"
                         />
 
 
@@ -62,6 +67,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nombre"
+                        android:gravity="center"
                         />
 
                 </android.support.design.widget.TextInputLayout>
@@ -75,6 +81,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
+                        android:gravity="center"
                         />
 
 
@@ -89,31 +96,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/confirm_password"
+                        android:gravity="center"
                         />
 
 
                 </android.support.design.widget.TextInputLayout>
-
                 <Button
-                    android:id="@+id/sign_login"
-                    android:layout_width="match_parent"
+                    android:id="@+id/sign_sign"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¿No tienes una cuenta?"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:padding="@dimen/mediumpadding"
+                    android:text="Crear"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:background="@color/greyButtons"
+                    android:textColor="#ffffff"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/top_button_login"
                     />
+
             </LinearLayout>
 
             <Button
-                android:id="@+id/sign_sign"
+                android:id="@+id/sign_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Acceder"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:background="#cc44ff"
-                android:textColor="#000000"
+                android:text="¿Ya tienes una cuenta?"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:padding="@dimen/mediumpadding"
+                android:background="@color/yellowSmi"
                 />
-
 
 
         </LinearLayout>

@@ -1,19 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 24
+    buildToolsVersion "24"
 
-    dataBinding{
+    dataBinding {
         enabled = true;
+    }
+
+    dexOptions {
+        incremental true
     }
 
     defaultConfig {
         applicationId "com.example.jhon.smi_servicios"
-        minSdkVersion 10
-        targetSdkVersion 23
+        minSdkVersion 22
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -26,12 +32,18 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0.3'
     compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
-    compile 'com.android.support:design:23.4.0'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.google.guava:guava:19.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.android.support:design:23.4.0'
+    compile 'com.google.android.gms:play-services:9.2.0'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:support-v4:24.0.0'
+    compile 'com.makeramen:roundedimageview:2.2.1'
+    compile 'com.google.android.gms:play-services-ads:9.2.0'
+    compile 'com.google.android.gms:play-services-auth:9.2.0'
+    compile 'com.google.android.gms:play-services-gcm:9.2.0'
 }

@@ -12,4 +12,8 @@
     <string name="actual_direction">Direccion Actual</string>
     <string name="future_direction">Direccion de Llegada</string>
     <string name="request_button">solicitar</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

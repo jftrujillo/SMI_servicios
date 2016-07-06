@@ -20,6 +20,8 @@ public class Constants {
     public static final String TYPE_CLIENT_SERVICES = "type_client_services";
     public static final String AZURE_MOBILE_SERVICE_URL = "https://smiserviciosmovil.azure-mobile.net/";
     public static final String AZURE_MOBILE_SERVICE_KEY  = "qIufyUhXNGYkLUXenUUDufQFPMdcUm65";
+    public static final String SERVICE_ID = "service_id";
+    public static final String SERVICE_NAME = "service_name";
 
 
 

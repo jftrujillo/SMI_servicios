@@ -9,4 +9,6 @@
     <dimen name="big_margin">8dp</dimen>
     <dimen name="smal_margin">4dp</dimen>
     <dimen name="height_map_fragment">200dp</dimen>
+    <dimen name="margin_fields_login">40dp</dimen>
+    <dimen name="top_button_login">30dp</dimen>
 </resources>

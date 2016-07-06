@@ -1,6 +1,7 @@
-package com.example.jhon.smi_servicios;
+opackage com.example.jhon.smi_servicios;
 
 import android.app.Service;
+import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -78,7 +79,7 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
 
                     }
                 });
-                colllapse.setTitle("Servicios del Hogar");
+                colllapse.setTitle("Hogar");
 
 
             }
@@ -120,11 +121,18 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(this,"" + position,Toast.LENGTH_SHORT).show();
         if (type == Constants.HOME_SERVICES){
+            Intent intent = new Intent(this,HomeServicesActivity.class);
+            intent.putExtra(Constants.SERVICE_ID,services.get(position).getId());
+            intent.putExtra(Constants.SERVICE_NAME,services.get(position).getName());
+            startActivity(intent);
 
         }
 
         else if (type == Constants.ROAD_ASISTENCE_SERVICES){
-
+            Intent intent = new Intent(this,RoadAsistenceServicesActivity.class);
+            intent.putExtra(Constants.SERVICE_ID,services.get(position).getId());
+            intent.putExtra(Constants.SERVICE_NAME,services.get(position).getName());
+            startActivity(intent);
         }
     }
 

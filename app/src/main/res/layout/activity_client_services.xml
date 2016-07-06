@@ -29,11 +29,18 @@
                 android:gravity="center"
                 android:layout_marginTop="18dp"
                 >
+
                 <ImageView
+                    android:id="@+id/icon1_client_services"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/circle_shape"
+                    android:src="@drawable/ic_home_black_24px"
+                    android:padding="8dp"
+                    android:gravity="center_vertical|center_horizontal"
                     />
+
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -44,8 +51,13 @@
                     android:textSize="@dimen/medium_letter"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
+                    />
 
-
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/yellowSmi"
+                    android:layout_margin="@dimen/big_margin"
                     />
 
             </LinearLayout>
@@ -61,7 +73,9 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/circle_shape"
+                    android:src="@drawable/icon_choosen_driver"
+                    android:padding="8dp"
                     />
 
                 <TextView
@@ -72,7 +86,12 @@
                     android:gravity="center"
                     android:textSize="@dimen/medium_letter"
                     android:layout_gravity="center"
-
+                    />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/yellowSmi"
+                    android:layout_margin="@dimen/big_margin"
                     />
 
             </LinearLayout>
@@ -88,7 +107,9 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/circle_shape"
+                    android:src="@drawable/road_asisstence_icon"
+                    android:padding="8dp"
                     />
 
                 <TextView
@@ -105,79 +126,6 @@
 
 
             </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Basura"
-                android:textSize="30sp"
-
-                />
 
 
 
