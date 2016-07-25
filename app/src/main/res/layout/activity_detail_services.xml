@@ -26,6 +26,14 @@
             app:expandedTitleMarginEnd="64dp"
             >
 
+            <ImageView
+                android:id="@+id/detail_services_image_collapse"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax"
+                android:scaleType="centerCrop"
+                />
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_services_toolbar"
                 android:layout_width="match_parent"

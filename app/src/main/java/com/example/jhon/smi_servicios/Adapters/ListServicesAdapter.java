@@ -8,7 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.jhon.smi_servicios.Models.Services;
 import com.example.jhon.smi_servicios.R;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
+
 import java.util.List;
 
 
@@ -50,8 +53,12 @@ public class ListServicesAdapter extends BaseAdapter{
         }
 
         ImageView img = (ImageView) v.findViewById(R.id.template_list_img);
-        Picasso.with(context).load(data.get(position).getImgurl()).into(img);
 
+        Transformation transformation = new RoundedTransformationBuilder()
+                .cornerRadiusDp(300)
+                .oval(false)
+                .build();
+        Picasso.with(context).load(data.get(position).getImgurl()).transform(transformation).into(img);
         TextView txt = (TextView) v.findViewById(R.id.template_list_name);
         txt.setText(data.get(position).getName());
 

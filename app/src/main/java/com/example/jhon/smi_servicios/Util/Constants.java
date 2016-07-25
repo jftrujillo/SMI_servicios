@@ -22,6 +22,7 @@ public class Constants {
     public static final String AZURE_MOBILE_SERVICE_KEY  = "qIufyUhXNGYkLUXenUUDufQFPMdcUm65";
     public static final String SERVICE_ID = "service_id";
     public static final String SERVICE_NAME = "service_name";
+    public static final String SERVICE_IMG_URL = "img_url";
 
 
 

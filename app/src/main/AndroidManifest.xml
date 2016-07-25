@@ -17,22 +17,22 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PivotActivity">
+        <activity android:name=".PivotActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ClientServicesActivity" />
-        <activity android:name=".AdminServiciesActivity" />
-        <activity android:name=".SigninActivity" />
-        <activity android:name=".RootActivity" />
-        <activity android:name=".HomeServicesActivity" />
-        <activity android:name=".DriverServicesActivity" />
-        <activity android:name=".RoadAsistenceServicesActivity" />
-        <activity android:name=".DetailServicesActivity" />
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ClientServicesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AdminServiciesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SigninActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RootActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".HomeServicesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".DriverServicesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RoadAsistenceServicesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".DetailServicesActivity" android:screenOrientation="portrait"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
