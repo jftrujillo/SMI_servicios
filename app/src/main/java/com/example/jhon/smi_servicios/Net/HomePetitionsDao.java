@@ -22,6 +22,7 @@ public class HomePetitionsDao {
     MobileServiceTable<Homepetitions> mTable;
     MobileServiceList<Homepetitions> mList;
 
+
     public HomePetitionsDao(MobileServiceClient mClient) {
         this.mClient = mClient;
         mTable = mClient.getTable(Homepetitions.class);
@@ -75,6 +76,14 @@ public class HomePetitionsDao {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
+                if (homepetitions.getId() != null){
+                    dataBaseResponse.onQueryCompleted(QUERY_COMPLETED,null);
+                }
+                else {
+                    dataBaseResponse.onQueryCompleted(QUERY_FAILED,null);
+                }
+
+
             }
         }.execute();
 

@@ -103,9 +103,9 @@
             android:padding="@dimen/mediumpadding"
             android:background="@color/yellowSmi"
             />
-        
-        
-        
+
+
+
     </LinearLayout>
     </ScrollView>
 </RelativeLayout>

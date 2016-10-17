@@ -9,8 +9,8 @@
     <string name="way_asist">Asistencia vial</string>
     <string name="choosen_driver">Conductor elegido</string>
     <string name="road_asistence">Asistencia Vial</string>
-    <string name="actual_direction">Direccion Actual</string>
-    <string name="future_direction">Direccion de Llegada</string>
+    <string name="actual_direction">¿Donde me recogen?</string>
+    <string name="future_direction">¿A donde me llevan?</string>
     <string name="request_button">solicitar</string>
     <string name="title_activity_maps">Map</string>
 

@@ -91,7 +91,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.login_login:
                 progress = ProgressDialog.show(this,getString(R.string.startin_session),getString(R.string.please_wait),true);
                 getLogin(email.getEditText().getText().toString(), password.getEditText().getText().toString());
-
                 break;
 
 

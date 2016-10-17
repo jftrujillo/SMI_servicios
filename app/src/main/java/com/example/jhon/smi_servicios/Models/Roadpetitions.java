@@ -4,12 +4,11 @@ package com.example.jhon.smi_servicios.Models;
  * Created by jhon on 21/05/16.
  */
 public class Roadpetitions {
-    public final int PETITION_PENDING = 0;
-    public final int PETITION_TAKEN = 1;
-    public final int PETITION_REFUSED = 2 ;
+    public static final int PETITION_PENDING = 0;
+    public static final int PETITION_TAKEN = 1;
+    public static final int PETITION_REFUSED = 2 ;
 
     String id;
-    String carid;
     String description;
     String insuranceid;
     String latitude;
@@ -18,8 +17,27 @@ public class Roadpetitions {
     String servicename;
     int state;
     String userid;
+    String cartype;
+    String carline;
 
     //region getters and setters
+
+
+    public String getCartype() {
+        return cartype;
+    }
+
+    public void setCartype(String cartype) {
+        this.cartype = cartype;
+    }
+
+    public String getCarline() {
+        return carline;
+    }
+
+    public void setCarline(String carline) {
+        this.carline = carline;
+    }
 
     public String getId() {
         return id;
@@ -27,14 +45,6 @@ public class Roadpetitions {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getCarid() {
-        return carid;
-    }
-
-    public void setCarid(String carid) {
-        this.carid = carid;
     }
 
     public String getDescription() {

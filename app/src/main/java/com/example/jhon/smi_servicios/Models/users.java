@@ -15,8 +15,15 @@ public class Users {
     String age;
     int type;
     String password;
+    boolean isvalid;
 
-    
+    public boolean isvalid() {
+        return isvalid;
+    }
+
+    public void setIsvalid(boolean isvalid) {
+        this.isvalid = isvalid;
+    }
 
     //region getters and setters
     public String getId() {

@@ -4,9 +4,9 @@ package com.example.jhon.smi_servicios.Models;
  * Created by jhon on 21/05/16.
  */
 public class Homepetitions {
-    public final int PETITION_PENDING = 0;
-    public final int PETITION_TAKEN = 1;
-    public final int PETITION_REFUSED = 2 ;
+    public static final int PETITION_PENDING = 0;
+    public static final int PETITION_TAKEN = 1;
+    public static final int PETITION_REFUSED = 2 ;
 
 
     String id;
@@ -18,6 +18,7 @@ public class Homepetitions {
     String randomcode;
     int state;
     String userid;
+
 
     //region Getters and Setters
 

@@ -65,7 +65,6 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
             case R.id.client_services_driver:
                 startActivity(new Intent(this, DriverServicesActivity.class).putExtra(Constants.TYPE_CLIENT_SERVICES,Constants.DRIVER_SERVICES));

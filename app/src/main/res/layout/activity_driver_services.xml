@@ -74,21 +74,61 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/smal_margin"
                 >
-                <Button
-                    android:id="@+id/driver_services_date"
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Fecha"
-                    />
-                <Button
-                    android:id="@+id/driver_services_time"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/medium_letter"
+                        android:text="10/08/2016"
+                        android:layout_gravity="center"
+                        android:textColor="@color/blackSmi"
+                        android:layout_margin="@dimen/mediumpadding"
+                        />
+                    <Button
+                        android:id="@+id/driver_services_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fecha"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Hora"
-                    android:layout_gravity="bottom"
-                    />
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="12:00"
+                        android:layout_margin="@dimen/mediumpadding"
+                        android:textSize="@dimen/medium_letter"
+                        android:textColor="@color/blackSmi"
+                        />
+
+                    <Button
+                        android:id="@+id/driver_services_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hora"
+                        android:layout_gravity="bottom"
+                        />
+                </LinearLayout>
+
+
 
 
             </LinearLayout>

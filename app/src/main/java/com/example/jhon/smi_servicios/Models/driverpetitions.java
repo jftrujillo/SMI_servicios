@@ -6,12 +6,11 @@ import java.sql.Date;
  * Created by jhon on 21/05/16.
  */
 public class driverpetitions {
-    public final int PETITION_PENDING = 0;
-    public final int PETITION_TAKEN = 1;
-    public final int PETITION_REFUSED = 2 ;
+    public static final int PETITION_PENDING = 0;
+    public static final int PETITION_TAKEN = 1;
+    public static final int PETITION_REFUSED = 2 ;
 
     String actualaddress;
-    Date date;
     String futureaddress;
     String id;
     String insuranceid;
@@ -19,21 +18,32 @@ public class driverpetitions {
     int state;
     String time;
     String userid;
+    String code;
+    String date;
     //region Getters and Setters
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
     public String getActualaddress() {
         return actualaddress;
     }
 
     public void setActualaddress(String actualaddress) {
         this.actualaddress = actualaddress;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getFutureaddress() {
