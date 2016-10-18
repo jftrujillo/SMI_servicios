@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="256dp"
         android:fitsSystemWindows="true"
-
         >
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/detail_services_collapse"
@@ -53,6 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:nestedScrollingEnabled="true"
         >
     </ListView>
 </android.support.design.widget.CoordinatorLayout>

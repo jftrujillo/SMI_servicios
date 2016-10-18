@@ -66,16 +66,13 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
         try {
             mClient = new MobileServiceClient(Constants.AZURE_MOBILE_SERVICE_URL,Constants.AZURE_MOBILE_SERVICE_KEY,this);
             ServicesDao servicesDao = new ServicesDao(mClient);
-
-
-
             type = getIntent().getExtras().getInt(Constants.TYPE_CLIENT_SERVICES);
             if (type == Constants.HOME_SERVICES){
                 servicesDao.getHomeAsistenceServices(new ServicesDao.OnDataBaseResponse() {
                     @Override
                     public void onCompletedQuery(int stateResult, MobileServiceList<Services> data) {
                         if (stateResult == ServicesDao.QUERY_COMPLETED){
-                            adapter = new ListServicesAdapter(data,getApplicationContext());
+                            adapter = new ListServicesAdapter(data,getApplicationContext(),0);
                             services.addAll(data);
                             list.setAdapter(adapter);
                             progressDialog.dismiss();
@@ -99,7 +96,7 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
                     @Override
                     public void onCompletedQuery(int stateResult, MobileServiceList<Services> data) {
                         if (stateResult == ServicesDao.QUERY_COMPLETED){
-                            adapter = new ListServicesAdapter(data,getApplicationContext());
+                            adapter = new ListServicesAdapter(data,getApplicationContext(),1);
                             list.setAdapter(adapter);
                             services.addAll(data);
                             progressDialog.dismiss();
@@ -112,11 +109,6 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
                 });
             }
             list.setOnItemClickListener(this);
-
-
-
-
-
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

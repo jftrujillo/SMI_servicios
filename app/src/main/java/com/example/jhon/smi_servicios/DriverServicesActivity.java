@@ -23,12 +23,14 @@ import com.example.jhon.smi_servicios.Models.driverpetitions;
 import com.example.jhon.smi_servicios.Net.DriverPetitionsDao;
 import com.example.jhon.smi_servicios.Net.PetitionsResultI;
 import com.example.jhon.smi_servicios.Util.Constants;
+import com.example.jhon.smi_servicios.Util.StringsValidation;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 
 import org.w3c.dom.Text;
 
 import java.net.MalformedURLException;
 import java.sql.Date;
+import java.util.EventListener;
 import java.util.Random;
 
 
@@ -45,14 +47,13 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
     DriverPetitionsDao driverPetitionsDao;
     MobileServiceClient mClient;
     int code;
+    ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_services);
-
-
         try {
             mClient = new MobileServiceClient(Constants.url,Constants.key,this);
             driverPetitionsDao = new DriverPetitionsDao(mClient,this);
@@ -99,19 +100,26 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
                 break;
 
             case R.id.driver_services_request_button:
-
-                driverPet.setUserid(preferences.getString(Constants.userID,""));
-                driverPet.setState(driverpetitions.PETITION_PENDING);
-                driverPet.setActualaddress(starAdress.getEditText().getText().toString());
-                driverPet.setFutureaddress(finishAdress.getEditText().getText().toString());
-                driverPet.setServicename(bundle.getString(Constants.SERVICE_NAME,""));
-                driverPet.setDate(date.getText().toString());
-                driverPet.setTime(hour.getText().toString());
-                driverPet.setInsuranceid("");
-                Random random = new Random();
-                code = random.nextInt(1000);
-                driverPet.setCode(String.valueOf(code));
-                driverPetitionsDao.createNewDriverPetition(driverPet);
+                if (StringsValidation.ValidateString(starAdress.getEditText().getText().toString(),finishAdress.getEditText().getText().toString(),date.getText().toString(),hour.getText().toString())){
+                    progressDialog = ProgressDialog.show(this,"Creando solicitud","Por favor espere",true,false);
+                    driverPet = new driverpetitions();
+                    driverPet.setUserid(preferences.getString(Constants.userID,""));
+                    driverPet.setState(driverpetitions.PETITION_PENDING);
+                    driverPet.setActualaddress(starAdress.getEditText().getText().toString());
+                    driverPet.setFutureaddress(finishAdress.getEditText().getText().toString());
+                    driverPet.setServicename(bundle.getString(Constants.SERVICE_NAME,""));
+                    driverPet.setDate(date.getText().toString());
+                    driverPet.setTime(hour.getText().toString());
+                    driverPet.setInsuranceid("");
+                    Random random = new Random();
+                    code = random.nextInt(1000);
+                    driverPet.setCode(String.valueOf(code));
+                    driverPetitionsDao.createNewDriverPetition(driverPet);
+                }
+                else {
+                    Toast.makeText(this, "Campos incorrectos, por favor verifique el formulario", Toast.LENGTH_SHORT).show();
+                }
+                
                 break;
 
         }
@@ -148,6 +156,7 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
     @Override
     public void OnInsertFinished(int state, String error) {
         if (state == DriverPetitionsDao.INSERT_CORRECT){
+            progressDialog.dismiss();
             builder = new AlertDialog.Builder(this);
             builder.setTitle(String.valueOf(code));
             builder.setMessage("Guarde su codigo, sera solicitado mas adelante");
@@ -161,6 +170,7 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
             alertDialog.show();
         }
         else {
+            progressDialog.dismiss();
             Toast.makeText(this,"Fallo la creacion de la soliciut",Toast.LENGTH_SHORT).show();
         }
     }

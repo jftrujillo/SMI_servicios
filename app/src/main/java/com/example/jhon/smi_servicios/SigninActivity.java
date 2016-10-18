@@ -149,6 +149,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 user.setGenre("");
                 user.setIdentifycard("");
                 user.setTelephone("");
+                user.setIsvalid(0);
                     mTableUSers.insert(user, new TableOperationCallback<Users>() {
                         @Override
                         public void onCompleted(Users entity, Exception exception, ServiceFilterResponse response) {

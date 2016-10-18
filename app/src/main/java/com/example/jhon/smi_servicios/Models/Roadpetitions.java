@@ -19,6 +19,15 @@ public class Roadpetitions {
     String userid;
     String cartype;
     String carline;
+    String support_person;
+
+    public String getSupport_person() {
+        return support_person;
+    }
+
+    public void setSupport_person(String support_person) {
+        this.support_person = support_person;
+    }
 
     //region getters and setters
 

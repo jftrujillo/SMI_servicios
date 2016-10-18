@@ -1,5 +1,6 @@
 package com.example.jhon.smi_servicios;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
@@ -9,10 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jhon.smi_servicios.Models.Homepetitions;
 import com.example.jhon.smi_servicios.Net.HomePetitionsDao;
 import com.example.jhon.smi_servicios.Util.Constants;
+import com.example.jhon.smi_servicios.Util.StringsValidation;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.MobileServiceList;
 import com.squareup.picasso.Picasso;
@@ -35,6 +38,7 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
     MobileServiceClient mClient;
     HomePetitionsDao homePetitionsDao;
     int rnd;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +55,7 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
 
         imgService = (ImageView) findViewById(R.id.img);
         titleService = (TextView) findViewById(R.id.title_service);
-
         bundle = getIntent().getExtras();
-
         urlImg = bundle.getString(Constants.SERVICE_IMG_URL);
         serviceName = bundle.getString(Constants.SERVICE_NAME);
 
@@ -84,18 +86,22 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        Random random = new Random();
-        rnd = random.nextInt(1000);
-        Homepetitions homepetitions = new Homepetitions();
-        homepetitions.setServicename(bundle.getString(Constants.SERVICE_NAME));
-        homepetitions.setAddress(direction.getEditText().getText().toString());
-        homepetitions.setDescription(description.getEditText().getText().toString());
-        homepetitions.setRandomcode(String.valueOf(rnd));
-        homepetitions.setState(Homepetitions.PETITION_PENDING);
-        homepetitions.setUserid(getSharedPreferences(Constants.preferencesName,MODE_PRIVATE).getString(Constants.userID,""));
-        homePetitionsDao.createNewPetition(homepetitions,this);
-
-
+        if (StringsValidation.ValidateString(direction.getEditText().getText().toString(),direction.getEditText().getText().toString(),description.getEditText().getText().toString())){
+            Random random = new Random();
+            rnd = random.nextInt(1000);
+            Homepetitions homepetitions = new Homepetitions();
+            homepetitions.setServicename(bundle.getString(Constants.SERVICE_NAME));
+            homepetitions.setAddress(direction.getEditText().getText().toString());
+            homepetitions.setDescription(description.getEditText().getText().toString());
+            homepetitions.setRandomcode(String.valueOf(rnd));
+            homepetitions.setState(Homepetitions.PETITION_PENDING);
+            homepetitions.setUserid(getSharedPreferences(Constants.preferencesName,MODE_PRIVATE).getString(Constants.userID,""));
+            progressDialog = ProgressDialog.show(this,"Creando su solicitud",", por favor espere un momento",true,false);
+            homePetitionsDao.createNewPetition(homepetitions,this);
+        }
+        else{
+            Toast.makeText(this, "Campos invalidos, por favor revise la informacion", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -104,6 +110,17 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
             builder.setTitle(String.valueOf(rnd));
             dialog = builder.create();
             dialog.show();
+            progressDialog.dismiss();
+        }
+        else {
+            progressDialog.dismiss();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Error");
+            builder.setMessage("No se pudo crear su solicitud, verifique su conexion a internet e intentelo nuevamente");
+            builder.setPositiveButton("Aceptar", null);
+            builder.setCancelable(false);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         }
     }
 }

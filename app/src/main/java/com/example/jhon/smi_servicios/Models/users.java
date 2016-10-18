@@ -15,13 +15,14 @@ public class Users {
     String age;
     int type;
     String password;
-    boolean isvalid;
+    int isvalid;
+    //IS VALID 0= no completado perfil, 1  es valido aun, 2 es rechazado.
 
-    public boolean isvalid() {
+    public int isvalid() {
         return isvalid;
     }
 
-    public void setIsvalid(boolean isvalid) {
+    public void setIsvalid(int isvalid) {
         this.isvalid = isvalid;
     }
 

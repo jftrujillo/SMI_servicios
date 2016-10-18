@@ -1,5 +1,6 @@
 package com.example.jhon.smi_servicios;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import com.example.jhon.smi_servicios.Models.Roadpetitions;
 import com.example.jhon.smi_servicios.Net.PetitionsResultI;
 import com.example.jhon.smi_servicios.Net.RoadPetitionsDAO;
 import com.example.jhon.smi_servicios.Util.Constants;
+import com.example.jhon.smi_servicios.Util.StringsValidation;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -49,6 +51,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
     MobileServiceClient mClient;
     RoadPetitionsDAO roadPetitionsDAO;
     int code;
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -111,34 +114,35 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
 
         @Override
         public void onClick(View v) {
-            String descriptionFromRequest = description.getText().toString();
-            Roadpetitions roadpetitions = new Roadpetitions();
-            roadpetitions.setCarline(carline.getEditText().getText().toString());
-            roadpetitions.setCartype(cartype.getEditText().getText().toString());
-            roadpetitions.setDescription(description.getText().toString());
-
-            Toast.makeText(this, descriptionFromRequest,Toast.LENGTH_SHORT).show();
-            builder = new AlertDialog.Builder(this);
-            Random random = new Random();
-            code = random.nextInt(1000);
-            roadpetitions.setRandomcode(String.valueOf(code));
-            roadpetitions.setServicename(bundle.getString(Constants.SERVICE_NAME));
-            roadpetitions.setState(Roadpetitions.PETITION_PENDING);
-            roadpetitions.setLatitude(String.valueOf(latitude));
-            roadpetitions.setLongitude(String.valueOf(longitude));
-            roadpetitions.setInsuranceid("");
-            roadpetitions.setUserid(preferences.getString(Constants.userID,""));
-            roadPetitionsDAO.createNewRoadPetition(roadpetitions);
-
-
+            if (StringsValidation.ValidateString(carline.getEditText().getText().toString(),cartype.getEditText().getText().toString(),description.getText().toString())){
+                progressDialog = ProgressDialog.show(this,"Creando su solicitud","Por favor espere",true,false);
+                String descriptionFromRequest = description.getText().toString();
+                Roadpetitions roadpetitions = new Roadpetitions();
+                roadpetitions.setCarline(carline.getEditText().getText().toString());
+                roadpetitions.setCartype(cartype.getEditText().getText().toString());
+                roadpetitions.setDescription(description.getText().toString());
+                Toast.makeText(this, descriptionFromRequest,Toast.LENGTH_SHORT).show();
+                builder = new AlertDialog.Builder(this);
+                Random random = new Random();
+                code = random.nextInt(1000);
+                roadpetitions.setRandomcode(String.valueOf(code));
+                roadpetitions.setServicename(bundle.getString(Constants.SERVICE_NAME));
+                roadpetitions.setState(Roadpetitions.PETITION_PENDING);
+                roadpetitions.setLatitude(String.valueOf(latitude));
+                roadpetitions.setLongitude(String.valueOf(longitude));
+                roadpetitions.setInsuranceid("");
+                roadpetitions.setUserid(preferences.getString(Constants.userID,""));
+                roadPetitionsDAO.createNewRoadPetition(roadpetitions);
+            }
+            else {
+                Toast.makeText(this, "Campos invalido, por favor revise la informacion en el formulario", Toast.LENGTH_SHORT).show();
+            }
 
         }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-
-        // Add a marker in Sydney and move the camera
         LatLng pop = new LatLng(latitude, longitude);
         map.addMarker(new MarkerOptions().position(pop).title("Su posicion"));
         map.getMaxZoomLevel();
@@ -158,6 +162,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
 
     @Override
     public void OnInsertFinished(int state, String error) {
+        progressDialog.dismiss();
         switch (state){
             case RoadPetitionsDAO.INSERT_CORRECT:
                 builder.setTitle(String.valueOf(code));
@@ -174,7 +179,6 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
 
             case RoadPetitionsDAO.INSERT_FAILED:
                 Toast.makeText(this,"Fallo el crear la nueva peticion",Toast.LENGTH_LONG).show();
-
                 break;
 
         }

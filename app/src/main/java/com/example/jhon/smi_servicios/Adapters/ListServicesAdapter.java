@@ -1,6 +1,7 @@
 package com.example.jhon.smi_servicios.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -21,10 +22,15 @@ import java.util.List;
 public class ListServicesAdapter extends BaseAdapter{
     List<Services> data;
     Context context;
+    int type;
+    /*
+    * 0 es home 1 es road
+    * */
 
-    public ListServicesAdapter(List<Services> data, Context context) {
+    public ListServicesAdapter(List<Services> data, Context context, int type) {
         this.data = data;
         this.context = context;
+        this.type=type;
     }
 
     @Override
@@ -53,15 +59,72 @@ public class ListServicesAdapter extends BaseAdapter{
         }
 
         ImageView img = (ImageView) v.findViewById(R.id.template_list_img);
+        if (type == 0){
+            if (data.get(position).getName().equals("Asistencia Medica")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_asistencia_medica));
+                Log.i("Amarillo","Amarillo");
+            }
+            if (data.get(position).getName().equals("Asistencia Electrica")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_paso_de_corriente));
 
-        Transformation transformation = new RoundedTransformationBuilder()
-                .cornerRadiusDp(300)
-                .oval(false)
-                .build();
-        Picasso.with(context).load(data.get(position).getImgurl()).transform(transformation).into(img);
-        TextView txt = (TextView) v.findViewById(R.id.template_list_name);
-        txt.setText(data.get(position).getName());
+            }
 
+            if (data.get(position).getName().equals("Cerrajeria")){
+                //Picasso.with(context).load(R.drawable.ic_smi_icons_apertura_de_vehiculos).into(img);
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_apertura_de_vehiculos));
+            }
+
+            if (data.get(position).getName().equals("Vidrios")){
+                //Picasso.with(context).load(R.drawable.ic_smi_icons_apertura_de_vehiculos).into(img);//falta
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_apertura_de_vehiculos));
+            }
+
+            if (data.get(position).getName().equals("Vigilancia Privada")){
+               // Picasso.with(context).load(R.drawable.ic_smi_icons_alquiler_de_vehiculos).into(img);//
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_alquiler_de_vehiculos));
+            }
+
+            if (data.get(position).getName().equals("Asistencia Jurídica")){
+                //Picasso.with(context).load(R.drawable.ic_smi_icons_asistencia_juridica).into(img);//
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_asistencia_juridica));
+            }
+
+            TextView txt = (TextView) v.findViewById(R.id.template_list_name);
+            txt.setText(data.get(position).getName());
+
+        }
+
+        else if (type == 1){
+            if (data.get(position).getName().equals("Grua")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_servicio_de_grua));
+            }
+
+            if (data.get(position).getName().equals("Mecanico")){
+                img.setBackground(context.getDrawable(R.drawable.ic_build_black_24dp));
+            }
+
+            if (data.get(position).getName().equals("Apertura de Vehiculos")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_apertura_de_vehiculos));
+            }
+
+            if (data.get(position).getName().equals("Cambio de llantas")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_cambio_de_llanta));
+            }
+
+            if (data.get(position).getName().equals("Conductor Profesional")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_conductor_profesional));
+            }
+
+            if (data.get(position).getName().equals("Dezplazamientos viales")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_desplazamientos_viales));
+            }
+
+            if (data.get(position).getName().equals("Paso de corriente")){
+                img.setBackground(context.getDrawable(R.drawable.ic_smi_icons_paso_de_corriente));
+            }
+            TextView txt = (TextView) v.findViewById(R.id.template_list_name);
+            txt.setText(data.get(position).getName());
+        }
         return v;
     }
 }
