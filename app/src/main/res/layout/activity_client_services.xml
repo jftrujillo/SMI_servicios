@@ -121,9 +121,48 @@
                     android:textSize="@dimen/medium_letter"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    ></TextView>
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/client_services_borrow_car"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="18dp"
+                >
+
+                <ImageView
+                    android:id="@+id/icon1_borrow_car"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_shape"
+                    android:src="@drawable/ic_directions_car_black_24dp"
+                    android:padding="8dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    />
 
 
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:text="Prestamo de carro"
+                    android:gravity="center"
+                    android:textSize="@dimen/medium_letter"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/yellowSmi"
+                    android:layout_margin="@dimen/big_margin"
+                    />
 
             </LinearLayout>
 

@@ -16,10 +16,17 @@ public class PivotActivity extends AppCompatActivity {
         preferences = getSharedPreferences(Constants.preferencesName,MODE_PRIVATE);
         boolean isLoged = preferences.getBoolean(Constants.isLoged,false);
         String type = preferences.getString(Constants.typeUser,"");
+        boolean isComplete = preferences.getBoolean(Constants.isComplete,true);
 
         if (isLoged){
             if (type.equals("1")){
-                startActivity(new Intent(this,ClientServicesActivity.class));
+                if (isComplete) {
+                    startActivity(new Intent(this, ClientServicesActivity.class));
+                }
+                else {
+                    startActivity(new Intent(PivotActivity.this,CompleteperfilActivity.class));
+
+                }
                 finish();
             }
 

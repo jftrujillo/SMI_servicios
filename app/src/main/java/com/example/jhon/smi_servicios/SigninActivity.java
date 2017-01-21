@@ -161,6 +161,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                                 editor.putBoolean(Constants.isLoged,true);
                                 editor.putString(Constants.typeUser,String.valueOf(entity.getType()));
                                 editor.putString(Constants.userName,entity.getName());
+                                editor.putBoolean(Constants.isComplete,false);
                                 editor.commit();
                                 progress.dismiss();
                                 startActivity(new Intent(getApplicationContext(),ClientServicesActivity.class));

@@ -1,5 +1,7 @@
 package com.example.jhon.smi_servicios;
 
+import android.*;
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -34,7 +37,7 @@ import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 
 import java.net.MalformedURLException;
 import java.util.Random;
-
+import java.util.jar.*;
 
 
 public class RoadAsistenceServicesActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback, PetitionsResultI {
@@ -44,7 +47,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
     Toolbar toolbar;
     AlertDialog alertDialog;
     AlertDialog.Builder builder;
-    TextInputLayout cartype, carline;
+    TextInputLayout cartype, carline,placa;
     Bundle bundle;
     double latitude,longitude;
     SharedPreferences preferences;
@@ -52,6 +55,8 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
     RoadPetitionsDAO roadPetitionsDAO;
     int code;
     ProgressDialog progressDialog;
+    private static final int MY_PERMISION = 112;
+    LocationManager lm;
 
 
     @Override
@@ -71,56 +76,35 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
             e.printStackTrace();
         }
 
-
-        preferences = getSharedPreferences(Constants.preferencesName,MODE_PRIVATE);
-
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-
-
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
-
         request = (Button) findViewById(R.id.road_asistence_button);
+        request.setOnClickListener(this);
         description = (EditText) findViewById(R.id.road_asistence_description);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         cartype = (TextInputLayout) findViewById(R.id.cartype);
         carline = (TextInputLayout) findViewById(R.id.carline);
-
+        placa = (TextInputLayout) findViewById(R.id.placa);
         bundle = getIntent().getExtras();
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Asistencia Vial");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        preferences = getSharedPreferences(Constants.preferencesName,MODE_PRIVATE);
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION
+        },MY_PERMISION);
 
 
-        request.setOnClickListener(this);
     }
 
         @Override
         public void onClick(View v) {
-            if (StringsValidation.ValidateString(carline.getEditText().getText().toString(),cartype.getEditText().getText().toString(),description.getText().toString())){
+            if (StringsValidation.ValidateString(carline.getEditText().getText().toString(),cartype.getEditText().getText().toString(),description.getText().toString(),placa.getEditText().getText().toString())){
                 progressDialog = ProgressDialog.show(this,"Creando su solicitud","Por favor espere",true,false);
                 String descriptionFromRequest = description.getText().toString();
                 Roadpetitions roadpetitions = new Roadpetitions();
                 roadpetitions.setCarline(carline.getEditText().getText().toString());
                 roadpetitions.setCartype(cartype.getEditText().getText().toString());
                 roadpetitions.setDescription(description.getText().toString());
+                roadpetitions.setPlaca(placa.getEditText().getText().toString());
                 Toast.makeText(this, descriptionFromRequest,Toast.LENGTH_SHORT).show();
                 builder = new AlertDialog.Builder(this);
                 Random random = new Random();
@@ -137,8 +121,27 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
             else {
                 Toast.makeText(this, "Campos invalido, por favor revise la informacion en el formulario", Toast.LENGTH_SHORT).show();
             }
-
         }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
+        }
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

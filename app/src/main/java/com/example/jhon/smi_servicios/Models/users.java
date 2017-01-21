@@ -3,7 +3,7 @@ package com.example.jhon.smi_servicios.Models;
 /**
  * Created by jhon on 25/04/16.
  */
-public class Users {
+public class    Users {
     String name;
     String identifycard;
     String telephone;

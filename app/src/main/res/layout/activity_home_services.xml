@@ -68,7 +68,7 @@
           <EditText
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:hint="Direecion"
+              android:hint="Dirección"
               />
 
         </android.support.design.widget.TextInputLayout>
@@ -85,14 +85,5 @@
                 android:textColor="#ffffff"
                 />
 
-
     </LinearLayout>
-
-
-
-
-
-
-
-
 </RelativeLayout>

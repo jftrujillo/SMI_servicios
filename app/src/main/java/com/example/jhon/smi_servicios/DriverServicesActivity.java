@@ -30,6 +30,7 @@ import org.w3c.dom.Text;
 
 import java.net.MalformedURLException;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.EventListener;
 import java.util.Random;
 
@@ -69,9 +70,13 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
         timePicker = (Button) findViewById(R.id.driver_services_time);
         datePicker = (Button) findViewById(R.id.driver_services_date);
         bundle = getIntent().getExtras();
-        date = (TextView) findViewById(R.id.date);
+        Calendar c = Calendar.getInstance();
 
+
+        date = (TextView) findViewById(R.id.date);
+        date.setText("8/12/2016");
         hour = (TextView) findViewById(R.id.hour);
+        hour.setText("12:00");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -96,7 +101,6 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
             case R.id.driver_services_time:
                 DialogFragment timeFragment = new TimeFragment();
                 timeFragment.show(getFragmentManager(),"TimePicker");
-                Toast.makeText(this,"asfd",Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.driver_services_request_button:
@@ -129,12 +133,15 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
     @Override
     public void onTimeSetInterface(int hour, int minute) {
         Toast.makeText(this,"Hora: " + hour + "Minutois " + minute,Toast.LENGTH_SHORT).show();
+        if (hour == 0){
+
+        }
         this.hour.setText(""+hour+":"+minute);
 
     }
 
     @Override
-    public void OnDateSetted(int year, int monthOfYear, int dayOfMonth) {
+    public void OnDateSetted(int year, int monthOfYear, int dayOfMonth,String tag) {
         Toast.makeText(this,"año: "+ year +"mont: " + monthOfYear + "day: "+ dayOfMonth,Toast.LENGTH_SHORT).show();
         this.date.setText(""+year+"/"+monthOfYear+"/"+dayOfMonth);
     }

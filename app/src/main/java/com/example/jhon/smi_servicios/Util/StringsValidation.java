@@ -21,4 +21,13 @@ public class StringsValidation {
         }
         return true;
     }
+
+    public static boolean ValidateDates(String...params){
+        for (String param : params) {
+            if (param.equals("00/00/0000")){
+                return false;
+            }
+        }
+        return true;
+    }
 }

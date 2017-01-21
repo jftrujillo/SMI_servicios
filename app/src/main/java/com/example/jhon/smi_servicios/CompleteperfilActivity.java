@@ -39,6 +39,7 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
     SharedPreferences.Editor editor;
     String generoString = " ";
     ProgressDialog progress;
+    AlertDialog alert;
 
 
     @Override
@@ -72,8 +73,8 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
         builder.setMessage("Para nosotros es muy importante conocer estta informacion acerca de ti, por favor completala para continuar");
         builder.setCancelable(false);
         builder.setPositiveButton("Aceptar", null);
-
-        AlertDialog alert = builder.create();
+        alert = builder.create();
+        alert.show();
 
     }
 

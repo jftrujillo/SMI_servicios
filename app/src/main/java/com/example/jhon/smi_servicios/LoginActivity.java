@@ -107,25 +107,41 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if (mListUsers.size() > 0){
-                                editorPreferences.putBoolean(Constants.isLoged,true);
-                                editorPreferences.putString(Constants.userEmai,mListUsers.get(0).getMail());
-                                editorPreferences.putString(Constants.userID, String.valueOf(mListUsers.get(0).getId()));
-                                editorPreferences.putString(Constants.typeUser,String.valueOf(mListUsers.get(0).getType()));
-                                editorPreferences.commit();
+                            if (mListUsers.size() > 0) {
+                                if (mListUsers.get(0).isvalid() != 2) {
+                                    editorPreferences.putBoolean(Constants.isLoged, true);
+                                    if (mListUsers.get(0).isvalid() == 0) {
+                                        editorPreferences.putBoolean(Constants.isComplete, false);
+                                    } else if (mListUsers.get(0).isvalid() == 1) {
+                                        editorPreferences.putBoolean(Constants.isComplete, true);
+                                    }
 
-                                if (mListUsers.get(0).getType() == Constants.CLIENT){
-                                    progress.dismiss();
-                                    startActivity(new Intent(getApplicationContext(),ClientServicesActivity.class));
-                                    finish();
+                                    editorPreferences.putString(Constants.userEmai, mListUsers.get(0).getMail());
+                                    editorPreferences.putString(Constants.userID, String.valueOf(mListUsers.get(0).getId()));
+                                    editorPreferences.putString(Constants.typeUser, String.valueOf(mListUsers.get(0).getType()));
+                                    editorPreferences.commit();
+
+                                    if (mListUsers.get(0).getType() == Constants.CLIENT) {
+                                        progress.dismiss();
+                                        if (mListUsers.get(0).isvalid() == 0){
+                                            startActivity(new Intent(LoginActivity.this,CompleteperfilActivity.class));
+                                        }
+                                        else if (mListUsers.get(0).isvalid() == 1){
+                                            startActivity(new Intent(getApplicationContext(), ClientServicesActivity.class));
+                                        }
+                                        finish();
+                                    }
+
+                                    if (mListUsers.get(0).getType() == Constants.ADMIN) {
+                                        progress.dismiss();
+                                        startActivity(new Intent(getApplicationContext(), AdminServiciesActivity.class));
+                                        finish();
+                                    }
+
                                 }
-
-                                if (mListUsers.get(0).getType() == Constants.ADMIN){
-                                    progress.dismiss();
-                                    startActivity(new Intent(getApplicationContext(),AdminServiciesActivity.class));
-                                    finish();
+                                else {
+                                    Toast.makeText(LoginActivity.this, "Este usuario no es valido.", Toast.LENGTH_SHORT).show();
                                 }
-
                             }
 
                             else {

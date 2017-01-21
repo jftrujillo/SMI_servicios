@@ -6,6 +6,7 @@ package com.example.jhon.smi_servicios.Util;
 public class Constants {
     public static final String preferencesName = "PREFERENCIAS_SMI";
     public static final String isLoged = "IS_LOGED";
+    public static final String isComplete = "IS_COMPLETE";
     public static final String userComplete = "IS_COMPLETE_USER";
     public static final String userID = "USER_ID";
     public static final String userEmai = "USER_EMAIL";

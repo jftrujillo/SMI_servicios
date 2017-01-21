@@ -20,6 +20,7 @@ public class Roadpetitions {
     String cartype;
     String carline;
     String support_person;
+    String placa;
 
     public String getSupport_person() {
         return support_person;
@@ -31,6 +32,14 @@ public class Roadpetitions {
 
     //region getters and setters
 
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
 
     public String getCartype() {
         return cartype;

@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
@@ -17,15 +18,20 @@ import java.util.Calendar;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class DateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     public interface OnDateSetI{
-        void OnDateSetted (int year, int monthOfYear, int dayOfMonth);
+        void OnDateSetted (int year, int monthOfYear, int dayOfMonth, String tag);
     }
-
+    String tag;
     OnDateSetI onDateSetI;
+
 
     @Override
     public void onAttach(Activity activity) {
         this.onDateSetI = (OnDateSetI) activity;
         super.onAttach(activity);
+    }
+
+    public void fragmentInit(String tag){
+        this.tag = tag;
     }
 
     @Override
@@ -39,6 +45,12 @@ public class DateFragment extends DialogFragment implements DatePickerDialog.OnD
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        onDateSetI.OnDateSetted(year,monthOfYear,dayOfMonth);
+        //Log.i("Fecha",view.getTag().toString());
+        if (tag != null) {
+            onDateSetI.OnDateSetted(year, monthOfYear, dayOfMonth, tag);
+        }
+        else {
+            onDateSetI.OnDateSetted(year, monthOfYear, dayOfMonth, "Default");
+        }
     }
 }

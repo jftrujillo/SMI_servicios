@@ -1,10 +1,9 @@
 package com.example.jhon.smi_servicios.Net;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.example.jhon.smi_servicios.Models.Homepetitions;
-import com.example.jhon.smi_servicios.Models.Roadpetitions;
+import com.example.jhon.smi_servicios.Models.CarBorrow;
+import com.example.jhon.smi_servicios.Models.driverpetitions;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.MobileServiceList;
 import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
@@ -12,58 +11,49 @@ import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by jhon on 25/07/16.
+ * Created by jhon on 12/28/16.
  */
-public class RoadPetitionsDAO {
 
+public class CarBorrowDao {
     public static final int INSERT_CORRECT = 0;
     public static final int INSERT_FAILED = 1;
 
     MobileServiceClient mClient;
-    MobileServiceTable<Roadpetitions> mTable;
-    MobileServiceList<Roadpetitions> mList;
+    MobileServiceTable<CarBorrow> mTable;
+    MobileServiceList<CarBorrow> mList;
     PetitionsResultI petitionsResultI;
 
-
-    public RoadPetitionsDAO(MobileServiceClient mClient, PetitionsResultI petitionsResultI) {
+    public CarBorrowDao(MobileServiceClient mClient, PetitionsResultI petitionsResultI) {
         this.mClient = mClient;
-        mTable = mClient.getTable(Roadpetitions.class);
+        this.mTable = mClient.getTable(CarBorrow.class);
         this.petitionsResultI = petitionsResultI;
     }
 
-    public void createNewRoadPetition(final Roadpetitions roadpetitions){
+    public void createNewCarBorrowPetition(final CarBorrow carBorrow){
         new AsyncTask<Void, Void, Void>() {
             @Override
-            protected Void doInBackground(Void... voids) {
+            protected Void doInBackground(Void... params) {
                 try {
-                    mTable.insert(roadpetitions).get();
+                    mTable.insert(carBorrow).get();
                 } catch (InterruptedException e) {
-                    petitionsResultI.OnInsertFinished(INSERT_FAILED,e.toString());
                     e.printStackTrace();
                 } catch (ExecutionException e) {
-                    petitionsResultI.OnInsertFinished(INSERT_FAILED,e.toString());
                     e.printStackTrace();
                 }
-
                 return null;
             }
 
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                if (roadpetitions.getId() != null){
-                    petitionsResultI.OnInsertFinished(INSERT_CORRECT,null);
+                if (carBorrow.getId() != null){
+                    petitionsResultI.OnInsertFinished(INSERT_CORRECT, null);
                 }
                 else {
-                    Log.i("AZURE_INSERT","FAILED");
-                    petitionsResultI.OnInsertFinished(INSERT_FAILED,null);
+                    petitionsResultI.OnInsertFinished(INSERT_FAILED, null);
                 }
             }
         }.execute();
 
-
     }
-
-
-
 }

@@ -24,7 +24,7 @@ import java.net.MalformedURLException;
 
 
 public class ClientServicesActivity extends AppCompatActivity implements View.OnClickListener {
-    LinearLayout home,driver,roadassitence;
+    LinearLayout home,driver,roadassitence,carBorrow;
     Toolbar toobar;
     CollapsingToolbarLayout collapse;
     ImageView icon1;
@@ -50,7 +50,8 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
         driver= (LinearLayout) findViewById(R.id.client_services_driver);
         roadassitence= (LinearLayout) findViewById(R.id.client_services_roadasistence);
         icon1 = (ImageView) findViewById(R.id.icon1_client_services);
-
+        carBorrow = (LinearLayout) findViewById(R.id.client_services_borrow_car);
+        carBorrow.setOnClickListener(this);
         home.setOnClickListener(this);
         driver.setOnClickListener(this);
         roadassitence.setOnClickListener(this);
@@ -75,7 +76,9 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
             case R.id.client_services_roadasistence:
                 startActivity(new Intent(this,DetailServicesActivity.class).putExtra(Constants.TYPE_CLIENT_SERVICES, Constants.ROAD_ASISTENCE_SERVICES));
                 break;
-
+            case R.id.client_services_borrow_car:
+                startActivity(new Intent(ClientServicesActivity.this,CarBorrowActivity.class));
+                break;
         }
 
     }
