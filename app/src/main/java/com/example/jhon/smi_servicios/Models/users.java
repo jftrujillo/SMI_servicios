@@ -16,6 +16,9 @@ public class    Users {
     int type;
     String password;
     int isvalid;
+    String promocion;
+    boolean perfilcompletado;
+
     //IS VALID 0= no completado perfil, 1  es valido aun, 2 es rechazado.
 
     public int isvalid() {
@@ -26,7 +29,30 @@ public class    Users {
         this.isvalid = isvalid;
     }
 
+
     //region getters and setters
+
+
+    public int getIsvalid() {
+        return isvalid;
+    }
+
+    public boolean isPerfilcompletado() {
+        return perfilcompletado;
+    }
+
+    public void setPerfilcompletado(boolean perfilcompletado) {
+        this.perfilcompletado = perfilcompletado;
+    }
+
+    public String getPromocion() {
+        return promocion;
+    }
+
+    public void setPromocion(String promocion) {
+        this.promocion = promocion;
+    }
+
     public String getId() {
         return id;
     }

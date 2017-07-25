@@ -84,14 +84,13 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
                     carBorrow.setDescription(descripcion.getEditText().getText().toString());
                     carBorrow.setNumberspots(numeroPuestos.getEditText().getText().toString());
                     carBorrow.setState(0);
-                    carBorrow.setSupport_person("");
                     carBorrow.setUserid(sharedPreferences.getString(Constants.userID,""));
                     carBorrowDao.createNewCarBorrowPetition(carBorrow);
                     progress = ProgressDialog.show(this,"Creando Solicitud","espere por favor",true,false);
 
                 }
                 else {
-                    Toast.makeText(this, "Campos Invalidos, por favor complete el formulario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Campos Inválidos, por favor complete el formulario", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -112,7 +111,7 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
     public void OnInsertFinished(int state, String error) {
         progress.dismiss();
         if (state == carBorrowDao.INSERT_CORRECT){
-            Toast.makeText(this, "Se creo la solicitud correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Se creó la solicitud correctamente", Toast.LENGTH_SHORT).show();
             finish();
         }
         else {

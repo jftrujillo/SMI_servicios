@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Build;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
     MobileServiceTable<Services> mTable;
     ListServicesAdapter adapter;
     ProgressDialog progressDialog;
+    AppBarLayout appBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,11 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
         colllapse = (CollapsingToolbarLayout) findViewById(R.id.detail_services_collapse);
         colllapse.setExpandedTitleColor(getResources().getColor(android.R.color.white));
         colllapse.setCollapsedTitleTextColor(getResources().getColor(android.R.color.black));
+        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        if (!(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP)){
+            appBarLayout.setExpanded(false);
+        }
+        // Do something for lollipop and above versions
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         progressDialog = ProgressDialog.show(this,"Recuperando lista de servicios","Un momento por favor",true);
@@ -79,7 +87,7 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
                         }
 
                         else {
-                            Toast.makeText(getApplicationContext(),"Error obteniedo servicios", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Error obteniendo servicios", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }
 
@@ -113,7 +121,7 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
         } catch (MalformedURLException e) {
             e.printStackTrace();
             Log.i("AZURE",e.toString());
-            Toast.makeText(this,"Error conectando con El servidor",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Error conectando con el servidor",Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
             finish();
         }
@@ -123,7 +131,6 @@ public class DetailServicesActivity extends AppCompatActivity implements Adapter
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this,"" + position,Toast.LENGTH_SHORT).show();
         if (type == Constants.HOME_SERVICES){
             Intent intent = new Intent(this,HomeServicesActivity.class);
             intent.putExtra(Constants.SERVICE_ID,services.get(position).getId());

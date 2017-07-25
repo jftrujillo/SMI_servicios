@@ -51,6 +51,9 @@
 
                     >
                     <EditText
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Correo Electronico"
@@ -64,6 +67,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <EditText
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nombre"
@@ -78,6 +84,9 @@
                     android:padding="@dimen/mediumpadding"
                     >
                     <EditText
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
@@ -93,6 +102,9 @@
                     android:layout_height="wrap_content"
                     >
                     <EditText
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:imeOptions="actionDone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/confirm_password"

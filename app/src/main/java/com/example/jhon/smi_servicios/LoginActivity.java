@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public MobileServiceList<Users> mListUsers;
     ProgressDialog progress;
 
+
     //endregion
 
     @Override
@@ -119,16 +120,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     editorPreferences.putString(Constants.userEmai, mListUsers.get(0).getMail());
                                     editorPreferences.putString(Constants.userID, String.valueOf(mListUsers.get(0).getId()));
                                     editorPreferences.putString(Constants.typeUser, String.valueOf(mListUsers.get(0).getType()));
-                                    editorPreferences.commit();
+                                    editorPreferences.putString(Constants.password,mListUsers.get(0).getPassword());
+                                    editorPreferences.putString(Constants.CODIGO_PROM,mListUsers.get(0).getPromocion());
+
 
                                     if (mListUsers.get(0).getType() == Constants.CLIENT) {
                                         progress.dismiss();
-                                        if (mListUsers.get(0).isvalid() == 0){
-                                            startActivity(new Intent(LoginActivity.this,CompleteperfilActivity.class));
+                                        if ((mListUsers.get(0).isvalid() == 0 || mListUsers.get(0).isvalid() == 1) && mListUsers.get(0).isPerfilcompletado()){
+                                            editorPreferences.putBoolean(Constants.isComplete,true);
+                                            startActivity(new Intent(LoginActivity.this,ClientServicesActivity.class));
                                         }
-                                        else if (mListUsers.get(0).isvalid() == 1){
-                                            startActivity(new Intent(getApplicationContext(), ClientServicesActivity.class));
+                                        else if ((mListUsers.get(0).isvalid() == 0 || mListUsers.get(0).isvalid() == 1) && !mListUsers.get(0).isPerfilcompletado()){
+                                            editorPreferences.putBoolean(Constants.isComplete,false);
+                                            startActivity(new Intent(getApplicationContext(), CompleteperfilActivity.class));
                                         }
+                                        editorPreferences.commit();
                                         finish();
                                     }
 
@@ -140,7 +146,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                 }
                                 else {
-                                    Toast.makeText(LoginActivity.this, "Este usuario no es valido.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Este usuario no es válido.", Toast.LENGTH_SHORT).show();
+                                    progress.dismiss();
                                 }
                             }
 

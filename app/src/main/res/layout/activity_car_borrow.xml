@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ></android.support.v7.widget.Toolbar>
+        />
 
     <RelativeLayout
         android:id="@+id/relative_img"
@@ -104,6 +104,8 @@
                 android:hint="Numero de puestos"
                 android:maxLines="1"
                 android:inputType="number"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -118,6 +120,7 @@
                 android:hint="Descripcion adicional"
                 android:maxLines="1"
                 android:inputType="textLongMessage"
+                android:imeOptions="actionDone"
                 />
         </android.support.design.widget.TextInputLayout>
         <Button

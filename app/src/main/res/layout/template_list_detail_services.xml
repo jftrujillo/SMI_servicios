@@ -34,7 +34,7 @@
         android:background="@drawable/circle_shape"
         android:layout_centerInParent="true"
         />
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/template_list_img"
             android:layout_width="70dp"
             android:layout_height="70dp"

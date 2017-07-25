@@ -40,6 +40,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +73,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()){
             case R.id.sign_sign:
                 if (singPass.getEditText().getText().toString().equals("") || singEmail.getEditText().getText().toString().equals("") || singName.getEditText().getText().toString().equals("")){
-                 Toast.makeText(this,"Valores de email, contraseña o nombre no validos",Toast.LENGTH_SHORT).show();
+                 Toast.makeText(this,"Valores de email, contraseña o nombre no válidos",Toast.LENGTH_SHORT).show();
                 }
 
                 else {
@@ -150,6 +151,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 user.setIdentifycard("");
                 user.setTelephone("");
                 user.setIsvalid(0);
+                user.setPerfilcompletado(false);
                     mTableUSers.insert(user, new TableOperationCallback<Users>() {
                         @Override
                         public void onCompleted(Users entity, Exception exception, ServiceFilterResponse response) {
@@ -162,9 +164,10 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                                 editor.putString(Constants.typeUser,String.valueOf(entity.getType()));
                                 editor.putString(Constants.userName,entity.getName());
                                 editor.putBoolean(Constants.isComplete,false);
+                                editor.putString(Constants.password,entity.getPassword());
                                 editor.commit();
                                 progress.dismiss();
-                                startActivity(new Intent(getApplicationContext(),ClientServicesActivity.class));
+                                startActivity(new Intent(getApplicationContext(),CompleteperfilActivity.class));
                                 finish();
                             }
                             else {

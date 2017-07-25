@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ></android.support.v7.widget.Toolbar>
+        />
 
     <RelativeLayout
         android:id="@+id/relative_img"
@@ -55,6 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="¿Cual es tu problema?"
+                android:maxLines="1"
+                android:singleLine="true"
                 />
 
         </android.support.design.widget.TextInputLayout>
@@ -69,6 +71,9 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="Dirección"
+              android:maxLines="1"
+              android:singleLine="true"
+              android:imeOptions="actionDone"
               />
 
         </android.support.design.widget.TextInputLayout>

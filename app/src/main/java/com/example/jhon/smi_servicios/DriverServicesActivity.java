@@ -26,12 +26,12 @@ import com.example.jhon.smi_servicios.Util.Constants;
 import com.example.jhon.smi_servicios.Util.StringsValidation;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 
-import org.w3c.dom.Text;
 
 import java.net.MalformedURLException;
-import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.EventListener;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 
@@ -74,9 +74,12 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
 
 
         date = (TextView) findViewById(R.id.date);
-        date.setText("8/12/2016");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        simpleDateFormat.format(new Date());
+        date.setText(simpleDateFormat.format(new Date()));
         hour = (TextView) findViewById(R.id.hour);
-        hour.setText("12:00");
+        SimpleDateFormat hourDateFormat = new SimpleDateFormat("hh:mm");
+        hour.setText(hourDateFormat.format(new Date()));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -90,7 +93,6 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
-
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.driver_services_date:
@@ -132,17 +134,23 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onTimeSetInterface(int hour, int minute) {
-        Toast.makeText(this,"Hora: " + hour + "Minutois " + minute,Toast.LENGTH_SHORT).show();
         if (hour == 0){
-
         }
-        this.hour.setText(""+hour+":"+minute);
+
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(new Date());
+        calendar.get(Calendar.HOUR_OF_DAY);
+        if (hour >= calendar.get(Calendar.HOUR_OF_DAY) + 1) {
+            this.hour.setText("" + hour + ":" + minute);
+        }
+        else {
+            Toast.makeText(this, "El conductor debe ser solicitado con una hora de anticipación", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
     @Override
     public void OnDateSetted(int year, int monthOfYear, int dayOfMonth,String tag) {
-        Toast.makeText(this,"año: "+ year +"mont: " + monthOfYear + "day: "+ dayOfMonth,Toast.LENGTH_SHORT).show();
         this.date.setText(""+year+"/"+monthOfYear+"/"+dayOfMonth);
     }
 
@@ -166,7 +174,7 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
             progressDialog.dismiss();
             builder = new AlertDialog.Builder(this);
             builder.setTitle(String.valueOf(code));
-            builder.setMessage("Guarde su codigo, sera solicitado mas adelante");
+            builder.setMessage("Guarde su código, sera solicitado más adelante");
             builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -178,7 +186,7 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
         }
         else {
             progressDialog.dismiss();
-            Toast.makeText(this,"Fallo la creacion de la soliciut",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Falló la creación de la solicitud",Toast.LENGTH_SHORT).show();
         }
     }
 }

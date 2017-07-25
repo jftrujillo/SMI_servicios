@@ -48,6 +48,9 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/actual_direction"
@@ -61,6 +64,9 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeOptions="actionDone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/future_direction"

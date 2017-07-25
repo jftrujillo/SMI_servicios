@@ -11,6 +11,7 @@ public class Constants {
     public static final String userID = "USER_ID";
     public static final String userEmai = "USER_EMAIL";
     public static final String typeUser = "USER_TYPE";
+    public static final String password = "PASS";
     public static final int    CLIENT = 1;
     public static final int    ADMIN = 2;
     public static final String url = "https://smiserviciosmovil.azure-mobile.net/";
@@ -25,6 +26,7 @@ public class Constants {
     public static final String SERVICE_ID = "service_id";
     public static final String SERVICE_NAME = "service_name";
     public static final String SERVICE_IMG_URL = "img_url";
+    public static final String CODIGO_PROM = "codigo_prom";
 
 
 

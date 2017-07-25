@@ -12,13 +12,17 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".aplication"
+        >
         <activity
             android:name=".PivotActivity"
             android:screenOrientation="portrait">
@@ -65,13 +69,16 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyDUtYMO6AfrH9Ghtt46r8IYfHflM8mc8Rs"/>
+            <!--android:value="AIzaSyAKSHdYq952gxWO1TWmj1QMOFmn0xhxbYg"/> -->
+
+
 
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".CompleteperfilActivity" />
-        <activity android:name=".CarBorrowActivity"></activity>
+        <activity android:name=".CompleteperfilActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".CarBorrowActivity"/>
     </application>
 
 </manifest>

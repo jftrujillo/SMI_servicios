@@ -123,6 +123,13 @@
                     android:layout_marginTop="8dp"
                     />
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/yellowSmi"
+                    android:layout_margin="@dimen/big_margin"
+                    />
+
             </LinearLayout>
 
             <LinearLayout

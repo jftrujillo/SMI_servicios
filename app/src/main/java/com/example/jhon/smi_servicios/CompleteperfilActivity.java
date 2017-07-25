@@ -1,6 +1,7 @@
 package com.example.jhon.smi_servicios;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,6 +29,7 @@ import com.microsoft.windowsazure.mobileservices.table.TableDeleteCallback;
 import com.microsoft.windowsazure.mobileservices.table.TableOperationCallback;
 
 import java.net.MalformedURLException;
+import java.util.Random;
 
 public class CompleteperfilActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     TextInputLayout  direccion,edad,numeroIdentificacion,telefono,celular;
@@ -40,12 +43,16 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
     String generoString = " ";
     ProgressDialog progress;
     AlertDialog alert;
+    Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_completeperfil);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Completar perfil");
         preferences = getSharedPreferences(Constants.preferencesName,MODE_PRIVATE);
         editor = preferences.edit();
         direccion = (TextInputLayout) findViewById(R.id.direccion);
@@ -70,7 +77,7 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Completa tu perfil");
-        builder.setMessage("Para nosotros es muy importante conocer estta informacion acerca de ti, por favor completala para continuar");
+        builder.setMessage("Para nosotros es muy importante conocer esta información acerca de ti, por favor complétala para continuar");
         builder.setCancelable(false);
         builder.setPositiveButton("Aceptar", null);
         alert = builder.create();
@@ -100,7 +107,7 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
                     generoString);
         }
         else {
-            Toast.makeText(this, "Campos invalidos o vacios, por favor complete la informacion", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Campos inválidos o vacios, por favor complete la información", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -108,8 +115,10 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
-                Users user = new Users();
-                user.setIsvalid(1);
+                Random random = new Random();
+                int promocion = random.nextInt(1000000000);
+                final Users user = new Users();
+                user.setIsvalid(0);
                 user.setAdress(direccion);
                 user.setAge(edad);
                 user.setCellphone(celular);
@@ -120,6 +129,9 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
                 user.setName(preferences.getString(Constants.userName,null));
                 user.setMail(preferences.getString(Constants.userEmai,null));
                 user.setType(1);
+                user.setPerfilcompletado(true);
+                user.setPromocion(String.valueOf(promocion));
+                user.setPassword(preferences.getString(Constants.password,""));
                 mTableUSers.update(user, new TableOperationCallback<Users>() {
                     @Override
                     public void onCompleted(Users entity, Exception exception, ServiceFilterResponse response) {
@@ -127,10 +139,25 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    editor.putBoolean(Constants.userComplete,true);
-                                    editor.commit();
-                                    startActivity(new Intent(CompleteperfilActivity.this,ClientServicesActivity.class));
                                     progress.dismiss();
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(CompleteperfilActivity.this);
+                                                builder.setTitle("Codigo promoción: " + user.getPromocion());
+                                                builder.setMessage("Guarde este codigo para promociones posteriormente");
+                                                builder.setCancelable(false);
+                                                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        //
+                                                        editor.putBoolean(Constants.isComplete,true);
+                                                        editor.putString(Constants.CODIGO_PROM,user.getPromocion());
+                                                        editor.commit();
+                                                        startActivity(new Intent(CompleteperfilActivity.this,ClientServicesActivity.class));
+                                                        finish();
+                                                    }
+                                                });
+
+                                    AlertDialog alertDialog = builder.create();
+                                    alertDialog.show();
                                 }
                             });
 
@@ -140,7 +167,7 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(getApplicationContext(),"Problemas Creando el usuario",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"Problemas Creando usuario",Toast.LENGTH_SHORT).show();
                                     progress.dismiss();
                                 }
                             });

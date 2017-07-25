@@ -1,11 +1,17 @@
 package com.example.jhon.smi_servicios;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +34,9 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
     Toolbar toobar;
     CollapsingToolbarLayout collapse;
     ImageView icon1;
+    String cupon;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editorPreferences;
 
 
     @Override
@@ -41,7 +50,8 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
         collapse.setTitle("Servicios");
         collapse.setExpandedTitleColor(getResources().getColor(android.R.color.white));
         collapse.setCollapsedTitleTextColor(getResources().getColor(android.R.color.black));
-
+        preferences = getSharedPreferences(Constants.preferencesName,MODE_PRIVATE);
+        cupon = preferences.getString(Constants.CODIGO_PROM,null);
 
 
 
@@ -62,6 +72,44 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
 
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_activity_client,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.cupon:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                            builder.setTitle(cupon != null ? "Su código de promoción es: " + cupon : "No cuenta con un código de promoción");
+                            builder.setCancelable(true);
+                            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //
+                                }
+                            });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                break;
+            case R.id.cerrar_session:
+                editorPreferences = preferences.edit();
+                editorPreferences.putString(Constants.userEmai, "");
+                editorPreferences.putString(Constants.userID, "");
+                editorPreferences.putString(Constants.typeUser, "");
+                editorPreferences.putString(Constants.password,"");
+                editorPreferences.putString(Constants.CODIGO_PROM,"");
+                editorPreferences.putBoolean(Constants.isLoged,false);
+                editorPreferences.commit();
+                startActivity(new Intent(this,LoginActivity.class));
+                break;
+        }
+        return true;
     }
 
     @Override

@@ -63,7 +63,7 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
         titleService.setText(serviceName);
 
         builder = new AlertDialog.Builder(this);
-        builder.setMessage("Por favor guarde su codigo de confimacion, sera solicitado mas adelante");
+        builder.setMessage("Por favor guarde su codigó de confimación, sera solicitado más adelante");
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -100,7 +100,7 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
             homePetitionsDao.createNewPetition(homepetitions,this);
         }
         else{
-            Toast.makeText(this, "Campos invalidos, por favor revise la informacion", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Campos inválidos, por favor revise la información", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -111,12 +111,13 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
             dialog = builder.create();
             dialog.show();
             progressDialog.dismiss();
+            Toast.makeText(this, "La informaciòn de confirmaciòn llegara a su correo electrònico", Toast.LENGTH_SHORT).show();
         }
         else {
             progressDialog.dismiss();
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Error");
-            builder.setMessage("No se pudo crear su solicitud, verifique su conexion a internet e intentelo nuevamente");
+            builder.setMessage("No se pudo crear su solicitud, verifique su conexión a internet e intentelo nuevamente");
             builder.setPositiveButton("Aceptar", null);
             builder.setCancelable(false);
             AlertDialog alertDialog = builder.create();

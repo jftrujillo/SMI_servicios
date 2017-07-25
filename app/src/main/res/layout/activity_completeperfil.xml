@@ -37,6 +37,9 @@
             android:hint="Direccion de Residencia"
             android:textSize="@dimen/medium_letter"
             />
+        android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
     </android.support.design.widget.TextInputLayout>
 
 
@@ -55,6 +58,9 @@
             android:hint="Edad"
             android:textSize="@dimen/medium_letter"
             />
+        android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
     </android.support.design.widget.TextInputLayout>
 
     <Spinner
@@ -76,6 +82,9 @@
             android:hint="Numero de identificacion"
             android:textSize="@dimen/medium_letter"
             android:inputType="number"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -92,6 +101,9 @@
             android:hint="Telefono"
             android:textSize="@dimen/medium_letter"
             android:inputType="number"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -107,6 +119,9 @@
             android:hint="celular"
             android:inputType="number"
             android:textSize="@dimen/medium_letter"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
             />
     </android.support.design.widget.TextInputLayout>
 
