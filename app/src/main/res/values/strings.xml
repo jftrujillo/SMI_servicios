@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">SMI servicios</string>
+    <string name="app_name">SMI logística</string>
     <string name="password">Contraseña</string>
-    <string name="confirm_password">Confirmar Contrasena</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
     <string name="startin_session">Iniciando Session</string>
     <string name="please_wait">por favor espere</string>
     <string name="check_internet">Por favor verifique su conexino a internet</string>
@@ -21,4 +21,14 @@
         <item>Hombre</item>
         <item>Mujer</item>
     </string-array>
+
+
+
+    <string name="hint_correo"><![CDATA[Correo  <font color=\'#cc0029\'>*</font>]]></string>
+    <string name="hint_cedula"><![CDATA[Cédula  <font color=\'#cc0029\'>*</font>]]></string>
+    <string name="hints_telefono"><![CDATA[Celular  <font color=\'#cc0029\'>*</font>]]></string>
+    <string name="toast_complete_perfil"><![CDATA[Por favor, complete todos los datos marcados con <font color=\'#cc0029\'>*</font>]]></string>
+    <string name="confirmacion">Guarde el código, la confirmación llegará a su correo en instantes.</string>
+
+
 </resources>

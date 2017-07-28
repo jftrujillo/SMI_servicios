@@ -22,6 +22,7 @@ import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.table.TableOperationCallback;
 
 import java.net.MalformedURLException;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 
@@ -151,6 +152,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 user.setIdentifycard("");
                 user.setTelephone("");
                 user.setIsvalid(0);
+                user.setCreado(new Date().getTime());
                 user.setPerfilcompletado(false);
                     mTableUSers.insert(user, new TableOperationCallback<Users>() {
                         @Override

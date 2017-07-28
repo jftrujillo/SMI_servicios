@@ -4,17 +4,23 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,10 +35,11 @@ import com.microsoft.windowsazure.mobileservices.table.TableDeleteCallback;
 import com.microsoft.windowsazure.mobileservices.table.TableOperationCallback;
 
 import java.net.MalformedURLException;
+import java.util.Date;
 import java.util.Random;
 
 public class CompleteperfilActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
-    TextInputLayout  direccion,edad,numeroIdentificacion,telefono,celular;
+    EditText direccion,edad,numeroIdentificacion,telefono,celular;
     Spinner genero;
     Button bnt;
     public MobileServiceClient mClient;
@@ -44,8 +51,11 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
     ProgressDialog progress;
     AlertDialog alert;
     Toolbar toolbar;
+    String cedulaText = "cedula ";
+    String celularText = "Celular ";
+    String asterik = "*";
 
-
+    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +65,11 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
         getSupportActionBar().setTitle("Completar perfil");
         preferences = getSharedPreferences(Constants.preferencesName,MODE_PRIVATE);
         editor = preferences.edit();
-        direccion = (TextInputLayout) findViewById(R.id.direccion);
-        edad = (TextInputLayout) findViewById(R.id.edad);
-        numeroIdentificacion= (TextInputLayout) findViewById(R.id.numero_identificacion);
-        telefono = (TextInputLayout) findViewById(R.id.telefono);
-        celular = (TextInputLayout) findViewById(R.id.celular);
+        direccion = (EditText) findViewById(R.id.direccion);
+        edad = (EditText) findViewById(R.id.edad);
+        numeroIdentificacion= (EditText) findViewById(R.id.numero_identificacion);
+        telefono = (EditText) findViewById(R.id.telefono);
+        celular = (EditText) findViewById(R.id.celular);
         genero = (Spinner) findViewById(R.id.genero);
         ArrayAdapter<CharSequence> adapterSpinner =  ArrayAdapter.createFromResource(this,R.array.generos,android.R.layout.simple_spinner_item);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -75,6 +85,35 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
             e.printStackTrace();
         }
 
+        SpannableStringBuilder stringBuilderCedula = new SpannableStringBuilder();
+        stringBuilderCedula.append(cedulaText);
+        int start = stringBuilderCedula.length();
+        stringBuilderCedula.append(asterik);
+        int end = stringBuilderCedula.length();
+
+        stringBuilderCedula.setSpan(new ForegroundColorSpan(Color.RED),start,end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        numeroIdentificacion.setHint(stringBuilderCedula);
+
+        SpannableStringBuilder stringBuilderCelular = new SpannableStringBuilder();
+        stringBuilderCelular.append(celularText);
+        int startCelular = stringBuilderCelular.length();
+        stringBuilderCelular.append(asterik);
+        int endCelular = stringBuilderCelular.length();
+        stringBuilderCelular.setSpan(new ForegroundColorSpan(Color.RED), startCelular, endCelular, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        celular.setHint(stringBuilderCelular);
+
+        /*
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            numeroIdentificacion.getEditText().setHint(Html.fromHtml(getString(R.string.hint_cedula),Html.FROM_HTML_MODE_LEGACY));
+            celular.getEditText().setHint(Html.fromHtml(getString(R.string.hints_telefono),Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            numeroIdentificacion.getEditText().setHint(Html.fromHtml(getString(R.string.hint_cedula)));
+            celular.getEditText().setHint(Html.fromHtml(getString(R.string.hints_telefono)));
+        }*/
+
+
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Completa tu perfil");
         builder.setMessage("Para nosotros es muy importante conocer esta información acerca de ti, por favor complétala para continuar");
@@ -84,30 +123,30 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
         alert.show();
 
     }
-
+    @SuppressWarnings("deprecation")
     @Override
     public void onClick(View view) {
 
         if (StringsValidation.ValidateString(
-                direccion.getEditText().getText().toString(),
-                edad.getEditText().getText().toString(),
-                numeroIdentificacion.getEditText().getText().toString(),
-                telefono.getEditText().getText().toString(),
-                celular.getEditText().getText().toString(),
-                generoString
+                numeroIdentificacion.getText().toString(),
+                celular.getText().toString()
         )){
             progress =  ProgressDialog.show(this,"Actualizando informacion de usuario","Por favor espere",true,false);
             progress.show();
             updateUser(
-                    direccion.getEditText().getText().toString(),
-                    edad.getEditText().getText().toString(),
-                    numeroIdentificacion.getEditText().getText().toString(),
-                    celular.getEditText().getText().toString(),
-                    telefono.getEditText().getText().toString(),
+                    direccion.getText().toString(),
+                    edad.getText().toString(),
+                    numeroIdentificacion.getText().toString(),
+                    celular.getText().toString(),
+                    telefono.getText().toString(),
                     generoString);
         }
         else {
-            Toast.makeText(this, "Campos inválidos o vacios, por favor complete la información", Toast.LENGTH_SHORT).show();
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                Toast.makeText(this, Html.fromHtml(getString(R.string.toast_complete_perfil),Html.FROM_HTML_MODE_LEGACY), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, Html.fromHtml(getString(R.string.toast_complete_perfil)), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -123,7 +162,7 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
                 user.setAge(edad);
                 user.setCellphone(celular);
                 user.setTelephone(telefono);
-                user.setGenre(generoString);
+                user.setGenre(generoString.equals("Genero") ? "" : generoString);
                 user.setIdentifycard(identificacion);
                 user.setId(preferences.getString(Constants.userID, null));
                 user.setName(preferences.getString(Constants.userName,null));
@@ -132,6 +171,7 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
                 user.setPerfilcompletado(true);
                 user.setPromocion(String.valueOf(promocion));
                 user.setPassword(preferences.getString(Constants.password,""));
+                user.setCreado(new Date().getTime());
                 mTableUSers.update(user, new TableOperationCallback<Users>() {
                     @Override
                     public void onCompleted(Users entity, Exception exception, ServiceFilterResponse response) {

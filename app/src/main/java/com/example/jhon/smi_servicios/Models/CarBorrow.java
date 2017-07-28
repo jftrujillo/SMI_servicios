@@ -16,9 +16,20 @@ public class CarBorrow {
     String numberspots;
     int state;
     String userid;
+    String randomCode;
 
 
     //region Getters and Setter
+
+
+    public String getRandomCode() {
+        return randomCode;
+    }
+
+    public void setRandomCode(String randomCode) {
+        this.randomCode = randomCode;
+    }
+
     public String getId() {
         return id;
     }

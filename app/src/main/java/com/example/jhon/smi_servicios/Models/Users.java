@@ -3,7 +3,7 @@ package com.example.jhon.smi_servicios.Models;
 /**
  * Created by jhon on 25/04/16.
  */
-public class    Users {
+public class Users {
     String name;
     String identifycard;
     String telephone;
@@ -18,6 +18,7 @@ public class    Users {
     int isvalid;
     String promocion;
     boolean perfilcompletado;
+    long creado;
 
     //IS VALID 0= no completado perfil, 1  es valido aun, 2 es rechazado.
 
@@ -32,6 +33,14 @@ public class    Users {
 
     //region getters and setters
 
+
+    public long getCreado() {
+        return creado;
+    }
+
+    public void setCreado(long creado) {
+        this.creado = creado;
+    }
 
     public int getIsvalid() {
         return isvalid;

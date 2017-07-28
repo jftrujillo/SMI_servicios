@@ -113,7 +113,6 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
                     driverPet.setState(driverpetitions.PETITION_PENDING);
                     driverPet.setActualaddress(starAdress.getEditText().getText().toString());
                     driverPet.setFutureaddress(finishAdress.getEditText().getText().toString());
-                    driverPet.setServicename(bundle.getString(Constants.SERVICE_NAME,""));
                     driverPet.setDate(date.getText().toString());
                     driverPet.setTime(hour.getText().toString());
                     driverPet.setInsuranceid("");
@@ -174,7 +173,7 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
             progressDialog.dismiss();
             builder = new AlertDialog.Builder(this);
             builder.setTitle(String.valueOf(code));
-            builder.setMessage("Guarde su código, sera solicitado más adelante");
+            builder.setMessage(R.string.confirmacion);
             builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {

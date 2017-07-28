@@ -77,8 +77,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".CompleteperfilActivity" android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".CarBorrowActivity"/>
+        <activity android:name=".CompleteperfilActivity" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait"/>
+        <activity android:name=".CarBorrowActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

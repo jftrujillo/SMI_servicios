@@ -2,10 +2,15 @@ package com.example.jhon.smi_servicios;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,6 +44,7 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
     HomePetitionsDao homePetitionsDao;
     int rnd;
     ProgressDialog progressDialog;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +59,26 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
             e.printStackTrace();
         }
 
+
+
+        bundle = getIntent().getExtras();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(ContextCompat.getDrawable(this,R.drawable.ic_arrow_back_black_24dp));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(bundle.getString(Constants.SERVICE_NAME));
+
         imgService = (ImageView) findViewById(R.id.img);
         titleService = (TextView) findViewById(R.id.title_service);
-        bundle = getIntent().getExtras();
+
         urlImg = bundle.getString(Constants.SERVICE_IMG_URL);
-        serviceName = bundle.getString(Constants.SERVICE_NAME);
+
 
         Picasso.with(this).load(urlImg).into(imgService);
-        titleService.setText(serviceName);
+        titleService.setVisibility(View.GONE);
 
         builder = new AlertDialog.Builder(this);
-        builder.setMessage("Por favor guarde su codigó de confimación, sera solicitado más adelante");
+        builder.setMessage(getString(R.string.confirmacion));
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -77,11 +92,17 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
         btn = (Button) findViewById(R.id.btn_acept);
 
         btn.setOnClickListener(this);
+    }
 
 
-
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
     }
 
     @Override

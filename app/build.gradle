@@ -6,10 +6,7 @@ android {
     dataBinding {
         enabled = true;
     }
-    dexOptions {
-        incremental true
-        javaMaxHeapSize "4g"
-    }
+
     defaultConfig {
         applicationId 'com.cameloft.jhon.smi_servicios'
         minSdkVersion 16

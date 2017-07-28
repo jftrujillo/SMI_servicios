@@ -1,8 +1,10 @@
 package com.example.jhon.smi_servicios;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,7 @@ import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
+import java.util.Random;
 
 public class CarBorrowActivity extends AppCompatActivity implements View.OnClickListener,DateFragment.OnDateSetI, PetitionsResultI {
     ImageView portada;
@@ -31,6 +34,8 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
     MobileServiceClient mClient;
     CarBorrowDao carBorrowDao;
     ProgressDialog progress;
+    int rnd;
+    AlertDialog alertDialog;
 
 
 
@@ -78,6 +83,8 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
                 if(StringsValidation.ValidateString(numeroPuestos.getEditText().getText().toString(),descripcion.getEditText().getText().toString())
                         && StringsValidation.ValidateDates(fechaInicioTexto.getText().toString(),fechaFinal.getText().toString())
                         ){
+                    Random random = new Random();
+                    rnd = random.nextInt(1000);
                     CarBorrow carBorrow = new CarBorrow();
                     carBorrow.setDatefinish(fechaFinalText.getText().toString());
                     carBorrow.setDatestart(fechaInicioTexto.getText().toString());
@@ -85,6 +92,7 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
                     carBorrow.setNumberspots(numeroPuestos.getEditText().getText().toString());
                     carBorrow.setState(0);
                     carBorrow.setUserid(sharedPreferences.getString(Constants.userID,""));
+                    carBorrow.setRandomCode(String.valueOf(rnd));
                     carBorrowDao.createNewCarBorrowPetition(carBorrow);
                     progress = ProgressDialog.show(this,"Creando Solicitud","espere por favor",true,false);
 
@@ -111,6 +119,17 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
     public void OnInsertFinished(int state, String error) {
         progress.dismiss();
         if (state == carBorrowDao.INSERT_CORRECT){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(String.valueOf(rnd));
+            builder.setMessage(R.string.confirmacion);
+            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            alertDialog = builder.create();
+            alertDialog.show();
             Toast.makeText(this, "Se creó la solicitud correctamente", Toast.LENGTH_SHORT).show();
             finish();
         }

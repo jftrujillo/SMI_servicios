@@ -229,7 +229,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
         switch (state){
             case RoadPetitionsDAO.INSERT_CORRECT:
                 builder.setTitle(String.valueOf(code));
-                builder.setMessage("Guarde su código, sera solicitado más adelante");
+                builder.setMessage(getString(R.string.confirmacion));
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

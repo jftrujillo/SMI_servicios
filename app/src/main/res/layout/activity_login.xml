@@ -74,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
                     android:gravity="center"
+                    android:inputType="textPassword"
                     />
 
 
