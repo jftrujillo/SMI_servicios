@@ -20,6 +20,7 @@ public class driverpetitions {
     String code;
     String date;
     String support_person;
+    long creado;
 
     public String getSupport_person() {
         return support_person;
@@ -31,6 +32,14 @@ public class driverpetitions {
 
     //region Getters and Setters
 
+
+    public long getCreado() {
+        return creado;
+    }
+
+    public void setCreado(long creado) {
+        this.creado = creado;
+    }
 
     public String getCode() {
         return code;

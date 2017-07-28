@@ -17,10 +17,19 @@ public class CarBorrow {
     int state;
     String userid;
     String randomCode;
+    long creado;
 
 
     //region Getters and Setter
 
+
+    public long getCreado() {
+        return creado;
+    }
+
+    public void setCreado(long creado) {
+        this.creado = creado;
+    }
 
     public String getRandomCode() {
         return randomCode;

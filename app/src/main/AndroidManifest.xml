@@ -69,8 +69,8 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDUtYMO6AfrH9Ghtt46r8IYfHflM8mc8Rs"/>
-            <!--android:value="AIzaSyAKSHdYq952gxWO1TWmj1QMOFmn0xhxbYg"/> -->
+            android:value="AIzaSyAKSHdYq952gxWO1TWmj1QMOFmn0xhxbYg"/>
+           <!-- android:value="AIzaSyDUtYMO6AfrH9Ghtt46r8IYfHflM8mc8Rs"/> token de publicacion -->
 
 
 

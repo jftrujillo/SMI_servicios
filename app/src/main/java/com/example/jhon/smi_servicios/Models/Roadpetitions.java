@@ -21,6 +21,8 @@ public class Roadpetitions {
     String carline;
     String support_person;
     String placa;
+    long creado;
+
 
     public String getSupport_person() {
         return support_person;
@@ -32,6 +34,14 @@ public class Roadpetitions {
 
     //region getters and setters
 
+
+    public long getCreado() {
+        return creado;
+    }
+
+    public void setCreado(long creado) {
+        this.creado = creado;
+    }
 
     public String getPlaca() {
         return placa;

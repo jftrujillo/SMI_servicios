@@ -26,6 +26,7 @@ import com.microsoft.windowsazure.mobileservices.MobileServiceList;
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
+import java.util.Date;
 import java.util.Random;
 
 
@@ -117,6 +118,7 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
             homepetitions.setRandomcode(String.valueOf(rnd));
             homepetitions.setState(Homepetitions.PETITION_PENDING);
             homepetitions.setUserid(getSharedPreferences(Constants.preferencesName,MODE_PRIVATE).getString(Constants.userID,""));
+            homepetitions.setCreado(new Date().getTime());
             progressDialog = ProgressDialog.show(this,"Creando su solicitud",", por favor espere un momento",true,false);
             homePetitionsDao.createNewPetition(homepetitions,this);
         }

@@ -119,6 +119,7 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
                     Random random = new Random();
                     code = random.nextInt(1000);
                     driverPet.setCode(String.valueOf(code));
+                    driverPet.setCreado(new Date().getTime());
                     driverPetitionsDao.createNewDriverPetition(driverPet);
                 }
                 else {

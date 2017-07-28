@@ -19,6 +19,7 @@ public class Homepetitions {
     int state;
     String userid;
     String support_person;
+    long creado;
 
     public String getSupport_person() {
         return support_person;
@@ -29,6 +30,15 @@ public class Homepetitions {
     }
 
     //region Getters and Setters
+
+
+    public long getCreado() {
+        return creado;
+    }
+
+    public void setCreado(long creado) {
+        this.creado = creado;
+    }
 
     public String getId() {
         return id;

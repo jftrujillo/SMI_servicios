@@ -39,6 +39,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 
 import java.net.MalformedURLException;
+import java.util.Date;
 import java.util.Random;
 import java.util.jar.*;
 
@@ -180,6 +181,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
                 roadpetitions.setLongitude(String.valueOf(longitude));
                 roadpetitions.setInsuranceid("");
                 roadpetitions.setUserid(preferences.getString(Constants.userID,""));
+                roadpetitions.setCreado(new Date().getTime());
                 roadPetitionsDAO.createNewRoadPetition(roadpetitions);
             }
             else {

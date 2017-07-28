@@ -23,6 +23,7 @@ import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
+import java.util.Date;
 import java.util.Random;
 
 public class CarBorrowActivity extends AppCompatActivity implements View.OnClickListener,DateFragment.OnDateSetI, PetitionsResultI {
@@ -93,6 +94,7 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
                     carBorrow.setState(0);
                     carBorrow.setUserid(sharedPreferences.getString(Constants.userID,""));
                     carBorrow.setRandomCode(String.valueOf(rnd));
+                    carBorrow.setCreado(new Date().getTime());
                     carBorrowDao.createNewCarBorrowPetition(carBorrow);
                     progress = ProgressDialog.show(this,"Creando Solicitud","espere por favor",true,false);
 
