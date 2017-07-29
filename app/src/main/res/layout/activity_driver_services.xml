@@ -142,8 +142,6 @@
                     android:textColor="#ffffff" />
             </LinearLayout>
         </LinearLayout>
-
-
     </ScrollView>
 
 
