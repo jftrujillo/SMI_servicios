@@ -11,7 +11,7 @@
     <string name="road_asistence">Asistencia Vial</string>
     <string name="actual_direction">¿Donde me recogen?</string>
     <string name="future_direction">¿A donde me llevan?</string>
-    <string name="request_button">solicitar</string>
+    <string name="request_button">Solicitar</string>
     <string name="title_activity_maps">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -29,6 +29,18 @@
     <string name="hints_telefono"><![CDATA[Celular  <font color=\'#cc0029\'>*</font>]]></string>
     <string name="toast_complete_perfil"><![CDATA[Por favor, complete todos los datos marcados con <font color=\'#cc0029\'>*</font>]]></string>
     <string name="confirmacion">Guarde el código, la confirmación llegará a su correo en instantes.</string>
+    <string name="fecha_no_seleccionada">Fecha no seleccionada</string>
+
+
+    <string-array name="numero_puestos">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
 
 
 </resources>

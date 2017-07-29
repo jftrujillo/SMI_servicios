@@ -164,13 +164,11 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
         public void onClick(View v) {
             if (StringsValidation.ValidateString(carline.getEditText().getText().toString(),cartype.getEditText().getText().toString(),description.getText().toString(),placa.getEditText().getText().toString())){
                 progressDialog = ProgressDialog.show(this,"Creando su solicitud","Por favor espere",true,false);
-                String descriptionFromRequest = description.getText().toString();
                 Roadpetitions roadpetitions = new Roadpetitions();
                 roadpetitions.setCarline(carline.getEditText().getText().toString());
                 roadpetitions.setCartype(cartype.getEditText().getText().toString());
                 roadpetitions.setDescription(description.getText().toString());
                 roadpetitions.setPlaca(placa.getEditText().getText().toString());
-                Toast.makeText(this, descriptionFromRequest,Toast.LENGTH_SHORT).show();
                 builder = new AlertDialog.Builder(this);
                 Random random = new Random();
                 code = random.nextInt(1000);

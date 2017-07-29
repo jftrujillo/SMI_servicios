@@ -1,5 +1,9 @@
 package com.example.jhon.smi_servicios.Util;
 
+import android.content.Context;
+
+import com.example.jhon.smi_servicios.R;
+
 /**
  * Created by jhonfredy on 17/10/2016.
  */
@@ -22,9 +26,9 @@ public class StringsValidation {
         return true;
     }
 
-    public static boolean ValidateDates(String...params){
+    public static boolean ValidateDates(Context context, String... params){
         for (String param : params) {
-            if (param.equals("00/00/0000")){
+            if (param.equals("00/00/0000") || param.equals(context.getString(R.string.fecha_no_seleccionada))){
                 return false;
             }
         }

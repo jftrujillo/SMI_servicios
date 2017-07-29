@@ -49,7 +49,8 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
     MobileServiceClient mClient;
     int code;
     ProgressDialog progressDialog;
-
+    SimpleDateFormat dateFormat;
+    SimpleDateFormat timeFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +71,23 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
         timePicker = (Button) findViewById(R.id.driver_services_time);
         datePicker = (Button) findViewById(R.id.driver_services_date);
         bundle = getIntent().getExtras();
-        Calendar c = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("yyyy-MMM-dd");
+        timeFormat = new SimpleDateFormat("HH:mm a");
 
 
         date = (TextView) findViewById(R.id.date);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        simpleDateFormat.format(new Date());
-        date.setText(simpleDateFormat.format(new Date()));
+        Calendar timeCalendarInit = new GregorianCalendar();
+        timeCalendarInit.setTime(new Date());
+        timeCalendarInit.set(Calendar.HOUR_OF_DAY,timeCalendarInit.get(Calendar.HOUR_OF_DAY) + 2);
+
+        date.setText(dateFormat.format(new Date()));
         hour = (TextView) findViewById(R.id.hour);
-        SimpleDateFormat hourDateFormat = new SimpleDateFormat("hh:mm");
-        hour.setText(hourDateFormat.format(new Date()));
+        hour.setText(timeFormat.format(timeCalendarInit.getTime()));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setTitle("Conductor elegído");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
         timePicker.setOnClickListener(this);
         request.setOnClickListener(this);
         datePicker.setOnClickListener(this);
@@ -140,18 +143,30 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(new Date());
         calendar.get(Calendar.HOUR_OF_DAY);
-        if (hour >= calendar.get(Calendar.HOUR_OF_DAY) + 1) {
-            this.hour.setText("" + hour + ":" + minute);
+        if (hour >= calendar.get(Calendar.HOUR_OF_DAY) + 2) {
+            Calendar timeCalendar = new GregorianCalendar();
+            timeCalendar.set(Calendar.HOUR_OF_DAY, hour);
+            timeCalendar.set(Calendar.MINUTE,minute);
+            this.hour.setText(timeFormat.format(timeCalendar.getTime()));
         }
         else {
-            Toast.makeText(this, "El conductor debe ser solicitado con una hora de anticipación", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "El conductor debe ser solicitado con dos horas de anticipación", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     @Override
     public void OnDateSetted(int year, int monthOfYear, int dayOfMonth,String tag) {
-        this.date.setText(""+year+"/"+monthOfYear+"/"+dayOfMonth);
+        Calendar calendarDate = new GregorianCalendar();
+        calendarDate.set(Calendar.YEAR, year);
+        calendarDate.set(Calendar.MONTH, monthOfYear);
+        calendarDate.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+        if (Calendar.getInstance().before(calendarDate)) {
+            this.date.setText(dateFormat.format(calendarDate.getTime()));
+        } 
+        else {
+            Toast.makeText(this, "La fecha seleccionada no puede ser anterior a la fecha actual", Toast.LENGTH_SHORT).show();
+        } 
     }
 
     @Override
@@ -160,9 +175,6 @@ public class DriverServicesActivity extends AppCompatActivity implements View.On
             case android.R.id.home:
                 onBackPressed();
                 break;
-
-
-
         }
         return super.onOptionsItemSelected(item);
     }

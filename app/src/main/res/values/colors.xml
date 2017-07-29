@@ -7,4 +7,5 @@
     <color name="yellowSmi">#eec22d</color>
     <color name="textLogin">#886C38</color>
     <color name="greyButtons">#39383B</color>
+    <color name="accept_button">#589488</color>
 </resources>

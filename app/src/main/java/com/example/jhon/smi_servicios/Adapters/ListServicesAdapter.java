@@ -93,12 +93,8 @@ public class ListServicesAdapter extends BaseAdapter{
             if (data.get(position).getName().contains("fachadas")){
                 img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_paint));
             }
-
-
-
             TextView txt = (TextView) v.findViewById(R.id.template_list_name);
             txt.setText(data.get(position).getName());
-
         }
 
         else if (type == 1){
