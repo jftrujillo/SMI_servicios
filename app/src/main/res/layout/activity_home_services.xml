@@ -47,21 +47,19 @@
         android:padding="@dimen/mediumpadding"
         >
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/description"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="¿Cual es tu problema?"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/medium_letter"
+            />
 
-            >
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="¿Cual es tu problema?"
-                android:maxLines="1"
-                android:singleLine="true"
-                />
-
-        </android.support.design.widget.TextInputLayout>
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"

@@ -125,6 +125,9 @@ public class ListServicesAdapter extends BaseAdapter{
             if (data.get(position).getName().equals("Paso de corriente")){
                 img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_paso_de_corriente));
             }
+            if (data.get(position).getName().equals("Asistencia jurídica")) {
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_asistencia_juridica));
+            }
             TextView txt = (TextView) v.findViewById(R.id.template_list_name);
             txt.setText(data.get(position).getName());
         }

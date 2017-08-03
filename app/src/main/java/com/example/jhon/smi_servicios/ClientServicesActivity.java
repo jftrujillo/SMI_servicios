@@ -108,6 +108,9 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
                 editorPreferences.commit();
                 startActivity(new Intent(this,LoginActivity.class));
                 break;
+            case android.R.id.home:
+                onBackPressed();
+                break;
         }
         return true;
     }

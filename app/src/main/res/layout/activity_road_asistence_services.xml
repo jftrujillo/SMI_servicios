@@ -42,14 +42,10 @@
        android:gravity="center"
        />
 
-    <EditText
-        android:id="@+id/road_asistence_description"
+    <RelativeLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:imeOptions="actionNext"
-        />
+        android:layout_height="wrap_content"/>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/placa"
             android:layout_width="match_parent"
@@ -68,55 +64,15 @@
 
 
         </android.support.design.widget.TextInputLayout>
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/container_tipo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/big_margin"
-            >
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/cartype"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                >
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Tipo de vehiculo"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    />
+            android:layout_height="wrap_content"/>
 
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/carline"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                >
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Marca de tu vehiculo"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:imeOptions="actionDone"
-                    />
-
-
-            </android.support.design.widget.TextInputLayout>
-
-
-
-
-
-        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/marca_vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>
 

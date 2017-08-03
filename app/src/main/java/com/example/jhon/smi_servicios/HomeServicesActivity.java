@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jhon.smi_servicios.Fragments.ProblemOptionsFragment;
 import com.example.jhon.smi_servicios.Models.Homepetitions;
 import com.example.jhon.smi_servicios.Net.HomePetitionsDao;
 import com.example.jhon.smi_servicios.Util.Constants;
@@ -31,9 +35,10 @@ import java.util.Random;
 
 
 
-public class HomeServicesActivity extends AppCompatActivity implements View.OnClickListener, HomePetitionsDao.OnDataBaseResponse {
+public class HomeServicesActivity extends AppCompatActivity implements View.OnClickListener, HomePetitionsDao.OnDataBaseResponse, ProblemOptionsFragment.IProblemInterface {
     Bundle bundle;
-    TextInputLayout description, direction;
+    TextInputLayout direction;
+    String descripcion = "";
     ImageView imgService;
     TextView titleService;
     Button btn;
@@ -46,6 +51,8 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
     int rnd;
     ProgressDialog progressDialog;
     Toolbar toolbar;
+    ProblemOptionsFragment fragmentDescripcion;
+    RelativeLayout container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +68,19 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
         }
 
 
-
         bundle = getIntent().getExtras();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(ContextCompat.getDrawable(this,R.drawable.ic_arrow_back_black_24dp));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(bundle.getString(Constants.SERVICE_NAME));
+        container = (RelativeLayout) findViewById(R.id.container);
+
+        fragmentDescripcion = new ProblemOptionsFragment();
+        fragmentDescripcion.initFragment(Constants.getStringArrayFromFragment(bundle.getString(Constants.SERVICE_ID),this),null);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.container, fragmentDescripcion);
+        fragmentTransaction.commit();
 
         imgService = (ImageView) findViewById(R.id.img);
         titleService = (TextView) findViewById(R.id.title_service);
@@ -88,7 +101,6 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
         });
 
 
-        description = (TextInputLayout) findViewById(R.id.description);
         direction = (TextInputLayout) findViewById(R.id.direction);
         btn = (Button) findViewById(R.id.btn_acept);
 
@@ -108,13 +120,13 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        if (StringsValidation.ValidateString(direction.getEditText().getText().toString(),direction.getEditText().getText().toString(),description.getEditText().getText().toString())){
+        if (StringsValidation.ValidateString(direction.getEditText().getText().toString(),direction.getEditText().getText().toString(),descripcion)){
             Random random = new Random();
             rnd = random.nextInt(1000);
             Homepetitions homepetitions = new Homepetitions();
             homepetitions.setServicename(bundle.getString(Constants.SERVICE_NAME));
             homepetitions.setAddress(direction.getEditText().getText().toString());
-            homepetitions.setDescription(description.getEditText().getText().toString());
+            homepetitions.setDescription(descripcion);
             homepetitions.setRandomcode(String.valueOf(rnd));
             homepetitions.setState(Homepetitions.PETITION_PENDING);
             homepetitions.setUserid(getSharedPreferences(Constants.preferencesName,MODE_PRIVATE).getString(Constants.userID,""));
@@ -146,5 +158,10 @@ public class HomeServicesActivity extends AppCompatActivity implements View.OnCl
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
+    }
+
+    @Override
+    public void OnOptionSetted(String option, String tag) {
+        descripcion = option;
     }
 }

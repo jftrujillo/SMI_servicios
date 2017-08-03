@@ -23,7 +23,6 @@
     </string-array>
 
 
-
     <string name="hint_correo"><![CDATA[Correo  <font color=\'#cc0029\'>*</font>]]></string>
     <string name="hint_cedula"><![CDATA[Cédula  <font color=\'#cc0029\'>*</font>]]></string>
     <string name="hints_telefono"><![CDATA[Celular  <font color=\'#cc0029\'>*</font>]]></string>
@@ -42,5 +41,175 @@
         <item>7</item>
     </string-array>
 
+    <string-array name="Plomería">
+        <item>Seleccione un problema</item>
+        <item>Fuga de inodoro</item>
+        <item>Goteo de grifos</item>
+        <item>Goteras techo</item>
+        <item>Humedad en pared</item>
+        <item>Humedad en piso</item>
+        <item>Ruptura de tubos</item>
+        <item>Taponamiento de desagües</item>
+        <item>Taponamiento de inodoro</item>
+        <item>Taponamiento de sifones</item>
+        <item>Otro</item>
+    </string-array>
+    
+    <string-array name="Asistencia_Electrica">
+        <item>Seleccione un problema</item>
+        <item>Aislamiento de energía</item>
+        <item>Bajón de energía</item>
+        <item>Breakers quemados</item>
+        <item>Daño en cuchilla</item>
+        <item>Daño en interruptores</item>
+        <item>Daño en plafón</item>
+        <item>Daño en toma corriente</item>
+        <item>Sobre carga</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="CERRAJERÍA_HOGAR">
+        <item>Seleccione un problema</item>
+       <item>Cambio de chapas</item>
+       <item>Cambio de claves</item>
+       <item>Chapa bloqueada</item>
+       <item>Chapa violentada</item>
+       <item>Perdida de llaves</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="VIDRIOS">
+        <item>Seleccione un problema</item>
+        <item>Instalación de marquesina</item>
+        <item>Instalación vidrios fachadas</item>
+        <item>Instalación vidrios muebles</item>
+        <item>Ruptura de marquesina</item>
+        <item>Ruptura vidrios fachadas</item>
+        <item>Ruptura vidrios muebles</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="VIGILANCIA">
+        <item>Seleccione un problema</item>
+        <item>Vigilancia de vivienda</item>
+        <item>Vigilancia establecimiento comercial</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="ARREGLO_DE_FACHADAS">
+        <item>Seleccione un problema</item>
+        <item>Impermeabilización</item>
+        <item>Mantenimiento</item>
+        <item>Pintura</item>
+        <item>Reparación</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="ASISTENCIA_JURÍDICA">
+        <item>Seleccione un problema</item>
+        <item>eeeee</item>
+        <item>rrrrrr</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="ASISTENCIA_MÉDICA">
+        <item>Seleccione un problema</item>
+        <item>eeeee</item>
+        <item>rrrrr</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="GRUA">
+        <item>Seleccione un problema</item>
+        <item>Accidente de transito</item>
+        <item>Falla mecánica</item>
+        <item>Impedimento para conducir</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="MECANICO">
+        <item>Seleccione un problema</item>
+        <item>Dificultad en los frenos</item>
+        <item>Recalentamiento</item>
+        <item>Ruido en el motor</item>
+        <item>Sistema eléctrico</item>
+        <item>Suspensión</item>
+        <item>Trasmisión</item>
+        <item>Vehículo no arranca</item>
+        <item>Vehículo no enciende</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="CERRAJERIA_CARRO">
+        <item>Seleccione un problema</item>
+        <item>Apertura de vehículo</item>
+        <item>Cambio clave</item>
+        <item>Cerradura violentada</item>
+        <item>Llave bloqueada</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="CAMBIO_DE_LLANTA">
+        <item>Seleccione un problema</item>
+        <item>Llanta bloqueada</item>
+        <item>Llanta estallada</item>
+        <item>Llanta pinchada</item>
+        <item>Otro</item>
+    </string-array>
+    
+    <string-array name="DESPLAZAMIENTO_VIAL">
+        <item>Seleccione un problema</item>
+        <item>dddddd</item>
+        <item>sssssss</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="PASO_DE_CORRIENTE">
+        <item>Seleccione un problema</item>
+       <item>Bateria dañada</item>
+       <item>Bateria descargada</item>
+       <item>Bujías</item>
+       <item>Problema de arranque</item>
+       <item>Problema de bobina</item>
+       <item>Problema de fusibles</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="COMBUSTIBLE">
+        <item>Seleccione un problema</item>
+        <item>Combustible agotado</item>
+        <item>Combustible equivocado</item>
+        <item>Otro</item>
+    </string-array>
+    <string-array name="otro">
+        <item>Seleccione un problema</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="tipo">
+        <item>Seleccione un problema</item>
+        <item>Automóvil</item>
+        <item>Buseta</item>
+        <item>Camioneta</item>
+        <item>Minivan</item>
+        <item>Motocicleta</item>
+        <item>Tracto mula</item>
+        <item>Turbo</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="marcas">
+        <item>Seleccione un problema</item>
+       <item>Chevrolet</item>
+       <item>Ford</item>
+       <item>Hyundai</item>
+       <item>Kia</item>
+       <item>Nissan</item>
+       <item>Renault</item>
+       <item>Suzuki</item>
+       <item>Volkswagen</item>
+       <item>Yamaha</item>
+       <item>Otro</item>
+    </string-array>
 
 </resources>

@@ -22,6 +22,7 @@ public class Roadpetitions {
     String support_person;
     String placa;
     long creado;
+    long fechaaceptada;
 
 
     public String getSupport_person() {
@@ -34,6 +35,14 @@ public class Roadpetitions {
 
     //region getters and setters
 
+
+    public long getFechaaceptada() {
+        return fechaaceptada;
+    }
+
+    public void setFechaaceptada(long fechaaceptada) {
+        this.fechaaceptada = fechaaceptada;
+    }
 
     public long getCreado() {
         return creado;

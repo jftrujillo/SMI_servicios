@@ -18,10 +18,19 @@ public class CarBorrow {
     String userid;
     String randomCode;
     long creado;
+    long fechaaceptada;
 
 
     //region Getters and Setter
 
+
+    public long getFechaaceptada() {
+        return fechaaceptada;
+    }
+
+    public void setFechaaceptada(long fechaaceptada) {
+        this.fechaaceptada = fechaaceptada;
+    }
 
     public long getCreado() {
         return creado;

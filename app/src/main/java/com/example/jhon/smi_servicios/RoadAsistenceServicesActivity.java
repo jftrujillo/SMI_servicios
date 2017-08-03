@@ -11,9 +11,11 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jhon.smi_servicios.Fragments.ProblemOptionsFragment;
 import com.example.jhon.smi_servicios.Models.Roadpetitions;
 import com.example.jhon.smi_servicios.Net.PetitionsResultI;
 import com.example.jhon.smi_servicios.Net.RoadPetitionsDAO;
@@ -44,14 +47,15 @@ import java.util.Random;
 import java.util.jar.*;
 
 
-public class RoadAsistenceServicesActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback, PetitionsResultI {
+public class RoadAsistenceServicesActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback, PetitionsResultI , ProblemOptionsFragment.IProblemInterface{
     public GoogleMap map;
     Button request;
-    EditText description;
+    String description = "";
     Toolbar toolbar;
     AlertDialog alertDialog;
     AlertDialog.Builder builder;
-    TextInputLayout cartype, carline, placa;
+    TextInputLayout placa;
+    String cartype, carline;
     Bundle bundle;
     double latitude, longitude;
     SharedPreferences preferences;
@@ -63,6 +67,12 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
     LocationManager lm;
     LocationListener locationListener;
     ProgressDialog progressDialog;
+    ProblemOptionsFragment fragment,tipoVehiculo,marcaVehiculo;
+    public static final String PROBLEMA = "problema";
+    public static final String TIPO= "tipo";
+    public static final String MARCA= "marca";
+
+
 
 
     @Override
@@ -84,12 +94,24 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
 
         request = (Button) findViewById(R.id.road_asistence_button);
         request.setOnClickListener(this);
-        description = (EditText) findViewById(R.id.road_asistence_description);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        cartype = (TextInputLayout) findViewById(R.id.cartype);
-        carline = (TextInputLayout) findViewById(R.id.carline);
         placa = (TextInputLayout) findViewById(R.id.placa);
         bundle = getIntent().getExtras();
+
+        fragment = new ProblemOptionsFragment();
+        fragment.initFragment(Constants.getStringArrayFromFragment(bundle.getString(Constants.SERVICE_ID),this),"problema");
+
+        tipoVehiculo = new ProblemOptionsFragment();
+        tipoVehiculo.initFragment(Constants.getStringArrayFromFragment("tipo",this),TIPO);
+
+        marcaVehiculo = new ProblemOptionsFragment();
+        marcaVehiculo.initFragment(Constants.getStringArrayFromFragment("marca", this), TIPO);
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.container, fragment);
+        fragmentTransaction.add(R.id.marca_vehiculo, marcaVehiculo);
+        fragmentTransaction.add(R.id.container_tipo, tipoVehiculo);
+        fragmentTransaction.commit();
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Asistencia Vial");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -162,12 +184,12 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
 
         @Override
         public void onClick(View v) {
-            if (StringsValidation.ValidateString(carline.getEditText().getText().toString(),cartype.getEditText().getText().toString(),description.getText().toString(),placa.getEditText().getText().toString())){
+            if (StringsValidation.ValidateString(carline,cartype,description)){
                 progressDialog = ProgressDialog.show(this,"Creando su solicitud","Por favor espere",true,false);
                 Roadpetitions roadpetitions = new Roadpetitions();
-                roadpetitions.setCarline(carline.getEditText().getText().toString());
-                roadpetitions.setCartype(cartype.getEditText().getText().toString());
-                roadpetitions.setDescription(description.getText().toString());
+                roadpetitions.setCarline(carline);
+                roadpetitions.setCartype(cartype);
+                roadpetitions.setDescription(description);
                 roadpetitions.setPlaca(placa.getEditText().getText().toString());
                 builder = new AlertDialog.Builder(this);
                 Random random = new Random();
@@ -247,5 +269,20 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
         }
 
 
+    }
+
+    @Override
+    public void OnOptionSetted(String option, String tag) {
+        switch (tag) {
+            case TIPO:
+                cartype = option;
+                break;
+            case MARCA:
+                carline = option;
+                break;
+            default:
+                description = option;
+                break;
+        }
     }
 }

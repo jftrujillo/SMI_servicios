@@ -21,6 +21,11 @@ public class driverpetitions {
     String date;
     String support_person;
     long creado;
+    long fechaaceptada;
+
+
+
+
 
     public String getSupport_person() {
         return support_person;
@@ -32,6 +37,14 @@ public class driverpetitions {
 
     //region Getters and Setters
 
+
+    public long getFechaaceptada() {
+        return fechaaceptada;
+    }
+
+    public void setFechaaceptada(long fechaaceptada) {
+        this.fechaaceptada = fechaaceptada;
+    }
 
     public long getCreado() {
         return creado;
