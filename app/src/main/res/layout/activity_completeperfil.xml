@@ -25,6 +25,31 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary" />
 
+            <EditText
+                android:id="@+id/numero_identificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="@dimen/medium_letter" />
+
+            <EditText
+                android:id="@+id/celular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="@dimen/medium_letter"
+                />
+
 
                 <EditText
                     android:id="@+id/direccion"
@@ -65,17 +90,7 @@
 
 
 
-                <EditText
-                    android:id="@+id/numero_identificacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_margin="8dp"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textSize="@dimen/medium_letter" />
+
 
 
             <EditText
@@ -92,17 +107,7 @@
                 android:textSize="@dimen/medium_letter" />
 
 
-            <EditText
-                    android:id="@+id/celular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_margin="8dp"
-                    android:imeOptions="actionDone"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textSize="@dimen/medium_letter" />
+
 
 
         </LinearLayout>

@@ -54,6 +54,7 @@
         <item>Taponamiento de sifones</item>
         <item>Otro</item>
     </string-array>
+
     
     <string-array name="Asistencia_Electrica">
         <item>Seleccione un problema</item>
@@ -106,16 +107,10 @@
     </string-array>
 
     <string-array name="ASISTENCIA_JURÍDICA">
-        <item>Seleccione un problema</item>
-        <item>eeeee</item>
-        <item>rrrrrr</item>
         <item>Otro</item>
     </string-array>
 
     <string-array name="ASISTENCIA_MÉDICA">
-        <item>Seleccione un problema</item>
-        <item>eeeee</item>
-        <item>rrrrr</item>
         <item>Otro</item>
     </string-array>
 
@@ -158,9 +153,6 @@
     </string-array>
     
     <string-array name="DESPLAZAMIENTO_VIAL">
-        <item>Seleccione un problema</item>
-        <item>dddddd</item>
-        <item>sssssss</item>
         <item>Otro</item>
     </string-array>
 
@@ -182,12 +174,11 @@
         <item>Otro</item>
     </string-array>
     <string-array name="otro">
-        <item>Seleccione un problema</item>
         <item>Otro</item>
     </string-array>
 
     <string-array name="tipo">
-        <item>Seleccione un problema</item>
+        <item>Seleccione un tipo</item>
         <item>Automóvil</item>
         <item>Buseta</item>
         <item>Camioneta</item>
@@ -199,7 +190,7 @@
     </string-array>
 
     <string-array name="marcas">
-        <item>Seleccione un problema</item>
+        <item>Seleccione una marca</item>
        <item>Chevrolet</item>
        <item>Ford</item>
        <item>Hyundai</item>

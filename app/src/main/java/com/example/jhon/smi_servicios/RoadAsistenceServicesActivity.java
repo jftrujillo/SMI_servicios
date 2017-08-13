@@ -55,7 +55,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
     AlertDialog alertDialog;
     AlertDialog.Builder builder;
     TextInputLayout placa;
-    String cartype, carline;
+    String cartype, carline = "";
     Bundle bundle;
     double latitude, longitude;
     SharedPreferences preferences;
@@ -105,7 +105,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
         tipoVehiculo.initFragment(Constants.getStringArrayFromFragment("tipo",this),TIPO);
 
         marcaVehiculo = new ProblemOptionsFragment();
-        marcaVehiculo.initFragment(Constants.getStringArrayFromFragment("marca", this), TIPO);
+        marcaVehiculo.initFragment(Constants.getStringArrayFromFragment("marca", this), MARCA);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.container, fragment);
@@ -120,7 +120,6 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
             @Override
             public void onLocationChanged(Location location) {
                 progressMap.dismiss();
-                lm.removeUpdates(locationListener);
                 if (location != null){
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
@@ -171,7 +170,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
                     finish();
                 }
             });
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            lm.requestSingleUpdate(LocationManager.GPS_PROVIDER , locationListener,null);
         } else {
             ActivityCompat.requestPermissions(RoadAsistenceServicesActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         }
@@ -219,7 +218,7 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
                                 finish();
                             }
                         });
-                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                    lm.requestSingleUpdate(LocationManager.GPS_PROVIDER, locationListener,null);
             }
         }
         else {

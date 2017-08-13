@@ -78,6 +78,11 @@ public class Constants {
             case "5FD30672-B651-4D50-94EB-61AFCF924CE7":
                 return context.getResources().getStringArray(R.array.COMBUSTIBLE);
 
+            case "marca":
+                return context.getResources().getStringArray(R.array.marcas);
+
+            case "tipo":
+                return context.getResources().getStringArray(R.array.tipo);
             default:
                 return context.getResources().getStringArray(R.array.otro);
         }

@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:hint="¿Que otro problema tiene?"
             android:layout_marginBottom="8dp"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             />
     </LinearLayout>
 

@@ -10,7 +10,6 @@
          location permissions for the 'MyLocation' functionality.
     -->
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -71,8 +70,8 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAKSHdYq952gxWO1TWmj1QMOFmn0xhxbYg"/>
-           <!-- android:value="AIzaSyDUtYMO6AfrH9Ghtt46r8IYfHflM8mc8Rs"/> token de publicacion -->
+            android:value="AIzaSyAC6L8b0dMk8WjT_an5FlsvOw1MN2EcQlI"/>
+            <!--  token de publicacion android:value="AIzaSyDUtYMO6AfrH9Ghtt46r8IYfHflM8mc8Rs"/>-->
 
 
 

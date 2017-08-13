@@ -1,12 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        SmiServiciosKey {
+            keyAlias 'smiservicioskey'
+            keyPassword '55cn9b22'
+            storeFile file('/Users/jhon/Code/llavesAndroid/SmiServiciosKey.jks')
+            storePassword '55cn9b22'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion '25.0.0'
     dataBinding {
         enabled = true;
     }
-
     defaultConfig {
         applicationId 'com.cameloft.jhon.smi_servicios'
         minSdkVersion 16
@@ -19,6 +26,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.SmiServiciosKey
         }
     }
     productFlavors {
