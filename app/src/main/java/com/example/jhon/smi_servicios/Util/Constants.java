@@ -83,6 +83,8 @@ public class Constants {
 
             case "tipo":
                 return context.getResources().getStringArray(R.array.tipo);
+            case "gasolina":
+                return context.getResources().getStringArray(R.array.gasolina);
             default:
                 return context.getResources().getStringArray(R.array.otro);
         }

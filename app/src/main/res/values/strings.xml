@@ -203,4 +203,13 @@
        <item>Otro</item>
     </string-array>
 
+    <string-array name="gasolina">
+        <item>Seleccione un tipo de gasolina</item>
+        <item>Gasolina</item>
+        <item>Diesel</item>
+        <item>Otro</item>
+    </string-array>
+
+
+
 </resources>

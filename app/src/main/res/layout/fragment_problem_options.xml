@@ -23,7 +23,7 @@
             android:id="@+id/otro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="¿Que otro problema tiene?"
+            android:hint="¿Qué otro problema tiene?"
             android:layout_marginBottom="8dp"
             android:imeOptions="actionNext"
             android:singleLine="true"

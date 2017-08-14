@@ -128,6 +128,10 @@ public class ListServicesAdapter extends BaseAdapter{
             if (data.get(position).getId().equals("1EF07BD2-E7B5-461C-A514-68EC0F83DB75")) {
                 img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_asistencia_juridica));
             }
+
+            if (data.get(position).getId().equals("5FD30672-B651-4D50-94EB-61AFCF924CE7")) {
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_gasolina));
+            }
             TextView txt = (TextView) v.findViewById(R.id.template_list_name);
             txt.setText(data.get(position).getName());
         }

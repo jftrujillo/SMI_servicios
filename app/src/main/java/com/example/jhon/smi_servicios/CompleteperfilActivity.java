@@ -51,7 +51,7 @@ public class CompleteperfilActivity extends AppCompatActivity implements View.On
     ProgressDialog progress;
     AlertDialog alert;
     Toolbar toolbar;
-    String cedulaText = "cedula ";
+    String cedulaText = "Cédula ";
     String celularText = "Celular ";
     String asterik = "*";
 

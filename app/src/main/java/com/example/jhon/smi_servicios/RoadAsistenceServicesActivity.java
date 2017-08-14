@@ -101,8 +101,15 @@ public class RoadAsistenceServicesActivity extends AppCompatActivity implements 
         fragment = new ProblemOptionsFragment();
         fragment.initFragment(Constants.getStringArrayFromFragment(bundle.getString(Constants.SERVICE_ID),this),"problema");
 
-        tipoVehiculo = new ProblemOptionsFragment();
-        tipoVehiculo.initFragment(Constants.getStringArrayFromFragment("tipo",this),TIPO);
+        if (bundle.getString(Constants.SERVICE_ID, null).equals("5FD30672-B651-4D50-94EB-61AFCF924CE7")) {
+            //es combustioble
+            tipoVehiculo = new ProblemOptionsFragment();
+            tipoVehiculo.initFragment(Constants.getStringArrayFromFragment("gasolina", this), TIPO);
+        } else {
+            tipoVehiculo = new ProblemOptionsFragment();
+            tipoVehiculo.initFragment(Constants.getStringArrayFromFragment("tipo", this), TIPO);
+
+        }
 
         marcaVehiculo = new ProblemOptionsFragment();
         marcaVehiculo.initFragment(Constants.getStringArrayFromFragment("marca", this), MARCA);

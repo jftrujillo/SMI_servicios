@@ -64,7 +64,7 @@ public class CarBorrowActivity extends AppCompatActivity implements View.OnClick
         toobar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toobar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Prestamo de vehículos");
+        getSupportActionBar().setTitle("Alquiler de vehículos");
         portada = (ImageView) findViewById(R.id.img);
         descripcion = (TextInputLayout) findViewById(R.id.descripcion);
         botonSolicitar = (Button) findViewById(R.id.btn_acept);
