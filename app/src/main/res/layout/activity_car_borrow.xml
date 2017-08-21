@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.jhon.smi_servicios.CarBorrowActivity"
+    tools:context="com.example.jhon.smi_logistica.CarBorrowActivity"
     android:fitsSystemWindows="true"
     >
 
@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Numero de puestos"
+                android:text="Número de puestos"
                 android:textColor="@color/blackSmi"
                 />
             <Spinner

@@ -4,7 +4,7 @@
     android:id="@+id/activity_completeperfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jhon.smi_servicios.CompleteperfilActivity"
+    tools:context="com.example.jhon.smi_logistica.CompleteperfilActivity"
     android:orientation="vertical"
     >
 

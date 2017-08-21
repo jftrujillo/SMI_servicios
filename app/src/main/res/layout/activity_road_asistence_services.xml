@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jhon.smi_servicios.RoadAsistenceServicesActivity">
+    tools:context="com.example.jhon.smi_logistica.RoadAsistenceServicesActivity">
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -30,7 +30,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_map_fragment"
-            tools:context="com.example.jhon.smi_servicios.MapsActivity" />
+            tools:context="com.example.jhon.smi_logistica.MapsActivity" />
 
 
    <TextView
@@ -56,7 +56,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Placa de tu vehiculo"
+                android:hint="Placa de tu vehículo"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:imeOptions="actionNext"

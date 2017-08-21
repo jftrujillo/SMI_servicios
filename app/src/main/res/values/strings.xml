@@ -153,6 +153,8 @@
     </string-array>
     
     <string-array name="DESPLAZAMIENTO_VIAL">
+        <item>Desplazamiento local</item>
+        <item>Desplazamiento fuera de la ciudad</item>
         <item>Otro</item>
     </string-array>
 
@@ -164,6 +166,7 @@
        <item>Problema de arranque</item>
        <item>Problema de bobina</item>
        <item>Problema de fusibles</item>
+        <item>Batería descargada</item>
         <item>Otro</item>
     </string-array>
 
@@ -209,7 +212,6 @@
         <item>Diesel</item>
         <item>Otro</item>
     </string-array>
-
 
 
 </resources>
