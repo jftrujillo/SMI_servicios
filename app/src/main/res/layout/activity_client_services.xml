@@ -7,179 +7,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.jhon.smi_logistica.ClientServicesActivity">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-
-
-            <LinearLayout
-                android:id="@+id/client_services_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginTop="18dp"
-                >
-
-                <ImageView
-                    android:id="@+id/icon1_client_services"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/circle_shape"
-                    android:src="@drawable/ic_home_black_24px"
-                    android:padding="8dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    />
-
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="@string/home_asist"
-                    android:gravity="center"
-                    android:textSize="@dimen/medium_letter"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/yellowSmi"
-                    android:layout_margin="@dimen/big_margin"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/client_services_driver"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                >
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/circle_shape"
-                    android:src="@drawable/icon_choosen_driver"
-                    android:padding="8dp"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="@string/choosen_driver"
-                    android:gravity="center"
-                    android:textSize="@dimen/medium_letter"
-                    android:layout_gravity="center"
-                    />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/yellowSmi"
-                    android:layout_margin="@dimen/big_margin"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/client_services_roadasistence"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                >
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/circle_shape"
-                    android:src="@drawable/road_asisstence_icon"
-                    android:padding="8dp"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="@string/way_asist"
-                    android:gravity="center"
-                    android:textSize="@dimen/medium_letter"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/yellowSmi"
-                    android:layout_margin="@dimen/big_margin"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/client_services_borrow_car"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginTop="18dp"
-                >
-
-                <ImageView
-                    android:id="@+id/icon1_borrow_car"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/circle_shape"
-                    android:src="@drawable/ic_directions_car_black_24dp"
-                    android:padding="8dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    />
-
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="Alquiler de vehículo"
-                    android:gravity="center"
-                    android:textSize="@dimen/medium_letter"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/yellowSmi"
-                    android:layout_margin="@dimen/big_margin"
-                    />
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-
-    </android.support.v4.widget.NestedScrollView>
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/activity_client_appbar"
         android:layout_width="match_parent"
@@ -219,6 +46,160 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/client_services_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon1_client_services"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_shape"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_asistencia_hogar" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/home_asist"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/medium_letter" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_margin="@dimen/big_margin"
+                    android:background="@color/yellowSmi" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/client_services_driver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_shape"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_conductor_elegido" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/choosen_driver"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/medium_letter" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_margin="@dimen/big_margin"
+                    android:background="@color/yellowSmi" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/client_services_roadasistence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_shape"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_asistencia_vial" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/way_asist"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/medium_letter" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_margin="@dimen/big_margin"
+                    android:background="@color/yellowSmi" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/client_services_borrow_car"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon1_borrow_car"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_shape"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_alquiler_vehiculos" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Alquiler de vehículo"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/medium_letter" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_margin="@dimen/big_margin"
+                    android:background="@color/yellowSmi" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>

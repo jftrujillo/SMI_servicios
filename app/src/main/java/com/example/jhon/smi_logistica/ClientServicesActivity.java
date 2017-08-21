@@ -48,7 +48,6 @@ public class ClientServicesActivity extends AppCompatActivity implements View.On
         home = (LinearLayout) findViewById(R.id.client_services_home);
         driver= (LinearLayout) findViewById(R.id.client_services_driver);
         roadassitence= (LinearLayout) findViewById(R.id.client_services_roadasistence);
-        icon1 = (ImageView) findViewById(R.id.icon1_client_services);
         carBorrow = (LinearLayout) findViewById(R.id.client_services_borrow_car);
         carBorrow.setOnClickListener(this);
         home.setOnClickListener(this);

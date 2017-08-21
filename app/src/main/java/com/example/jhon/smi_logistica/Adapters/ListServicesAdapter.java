@@ -62,13 +62,13 @@ public class ListServicesAdapter extends BaseAdapter{
                 Log.i("Amarillo","Amarillo");
             }
             if (data.get(position).getId().equals("0E980C91-A9D7-46D0-A835-F2C3B9BACF6E")){
-                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_paso_de_corriente));
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_asistencia_electrica));
 
             }
 
             if (data.get(position).getId().equals("675ABF9F-2003-4228-B447-AFEBC41F01F5")){
                 //Picasso.with(context).load(R.drawable.ic_smi_icons_apertura_de_vehiculos).into(img);
-                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_apertura_de_vehiculos));
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_cerrajeria));
             }
 
             if (data.get(position).getId().equals("068DA69D-16F4-40E9-801F-3338F8384B85")){
@@ -78,12 +78,12 @@ public class ListServicesAdapter extends BaseAdapter{
 
             if (data.get(position).getId().equals("5F283C26-1577-4583-BFAC-D34BA01D3434")){
                // Picasso.with(context).load(R.drawable.ic_smi_icons_alquiler_de_vehiculos).into(img);//
-                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_alquiler_de_vehiculos));
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_plomeria));
             }
 
             if (data.get(position).getId().equals("48D00472-1BE9-4E37-B9EB-3F057F3F6D93")){
                 //Picasso.with(context).load(R.drawable.ic_smi_icons_asistencia_juridica).into(img);//
-                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_asistencia_juridica));
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_asistencia_juridica));
             }
 
             if (data.get(position).getId().contains("7D756D94-9369-4AE2-B0D8-C55F5FBE050A")){
@@ -99,7 +99,7 @@ public class ListServicesAdapter extends BaseAdapter{
             }
 
             if (data.get(position).getId().equals("B4E6D3C3-0824-4422-9ACF-B61C8A8CAE95")){
-                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_build_black_24dp));
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_mecanico));
             }
 
             if (data.get(position).getId().contains("2AF3C208-8EE8-447E-877B-D83CAAB1A3B3")){
@@ -111,7 +111,7 @@ public class ListServicesAdapter extends BaseAdapter{
             }
 
             if (data.get(position).getId().equals("F07E8F8B-C2DA-4EF6-B81C-81A75FE7D1E0")){
-                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_smi_icons_conductor_profesional));
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_conductor_profesional));
             }
 
             if (data.get(position).getId().equals("98349252-11DD-4F55-855D-C8388BD29E0F")){
