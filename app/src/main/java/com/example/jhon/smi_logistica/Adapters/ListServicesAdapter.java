@@ -76,7 +76,7 @@ public class ListServicesAdapter extends BaseAdapter{
                 img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_ventanas));
             }
 
-            if (data.get(position).getId().equals("5F283C26-1577-4583-BFAC-D34BA01D3434")){
+            if (data.get(position).getId().contains("BEC3F8C6-3788-4E16-9D3E-1309E8734991")){
                // Picasso.with(context).load(R.drawable.ic_smi_icons_alquiler_de_vehiculos).into(img);//
                 img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_plomeria));
             }
@@ -89,6 +89,13 @@ public class ListServicesAdapter extends BaseAdapter{
             if (data.get(position).getId().contains("7D756D94-9369-4AE2-B0D8-C55F5FBE050A")){
                 img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_paint));
             }
+
+            if (data.get(position).getId().contains("5F283C26-1577-4583-BFAC-D34BA01D3434")) {
+                img.setBackground(ContextCompat.getDrawable(context,R.drawable.ic_vigilancia_privada));
+            }
+
+
+
             TextView txt = (TextView) v.findViewById(R.id.template_list_name);
             txt.setText(data.get(position).getName());
         }
